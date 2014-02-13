@@ -33,7 +33,7 @@ public class RestClient {
 			connection.setRequestMethod("GET");
 			connection.setDoOutput(true);
 			connection.setReadTimeout(10000);
-			connection.setRequestProperty("Accept", "application/xml");
+			connection.setRequestProperty("Accept", "application/rdf+xml");
 			connection.connect();
 			
 			
