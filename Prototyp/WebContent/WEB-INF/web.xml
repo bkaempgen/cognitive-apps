@@ -8,7 +8,7 @@
     <description></description>
     <display-name>CalcServlet</display-name>
     <servlet-name>CalcServlet</servlet-name>
-    <servlet-class>test.CalcServlet</servlet-class>
+    <servlet-class>kit.sfb.cognitive.apps.calculator.CalcServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CalcServlet</servlet-name>
@@ -18,7 +18,7 @@
     <description></description>
     <display-name>SFBServletCast</display-name>
     <servlet-name>SFBServletCast</servlet-name>
-    <servlet-class>kit.edu.SFBServletCast</servlet-class>
+    <servlet-class>kit.sfb.cognitive.apps.cast.SFBServletCast</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SFBServletCast</servlet-name>
@@ -28,7 +28,7 @@
     <description></description>
     <display-name>SFBServletStripTs</display-name>
     <servlet-name>SFBServletStripTs</servlet-name>
-    <servlet-class>kit.edu.SFBServletStripTs</servlet-class>
+    <servlet-class>kit.sfb.cognitive.apps.stripts.SFBServletStripTs</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SFBServletStripTs</servlet-name>
@@ -38,7 +38,7 @@
     <description></description>
     <display-name>SFBServletMeanFree</display-name>
     <servlet-name>SFBServletMeanFree</servlet-name>
-    <servlet-class>kit.edu.SFBServletMeanFree</servlet-class>
+    <servlet-class>kit.sfb.cognitive.apps.meanfree.SFBServletMeanFree</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SFBServletMeanFree</servlet-name>
@@ -48,18 +48,17 @@
     <description></description>
     <display-name>SFBServletTranslator</display-name>
     <servlet-name>SFBServletTranslator</servlet-name>
-    <servlet-class>kit.edu.SFBServletTranslator</servlet-class>
+    <servlet-class>kit.sfb.cognitive.apps.converter.SFBServletTranslator</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SFBServletTranslator</servlet-name>
     <url-pattern>/SFBServletTranslator</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>SFBServletDescriber</display-name>
     <servlet-name>SFBServletDescriber</servlet-name>
-    <servlet-class>kit.edu.SFBServletDescriber</servlet-class>
+    <servlet-class>kit.sfb.cognitive.apps.converter.SFBServletDescriber</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SFBServletDescriber</servlet-name>
