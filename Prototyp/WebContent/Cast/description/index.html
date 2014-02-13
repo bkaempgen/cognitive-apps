@@ -1,0 +1,40 @@
+<html>
+<head></head>
+<body>
+	<table border="0">
+		<tr>
+			<td>Namespace:</td>
+			<td><textarea rows="5" cols="80">
+PREFIX rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+PREFIX lapis: 	<http://localhost:8080/Prototyp/Ontology/Lapis#>.
+PREFIX xs:	<http://www.w3.org/2001/XMLSchema#>.
+PREFIX dummy: 	<http://localhost:8080/Prototyp/Ontology/Dummy#>.
+</textarea></td>
+		</tr>
+
+		<tr>
+			<td>Input:</td>
+			<td><textarea rows="10" cols="80">
+?request		rdf:type		lapis:Request.
+?request		dummy:InputImage	?InputImage.
+?request		dummy:OutputImagePath	?OutputImagePath.
+?InputImage		rdf:type		lapis:image.
+?OutputImagePath	rdf:type		lapis:directory.
+</textarea></td>
+		</tr>
+		<tr>
+			<td>Output:</td>
+			<td><textarea rows="10" cols="80">
+?request		rdf:type		lapis:Request.
+?request		dummy:InputImage	?InputImage.
+?request		dummy:OutputImagePath	?OutputImagePath.
+?InputImage		rdf:type		lapis:image.
+?OutputImagePath	rdf:type		lapis:directory.
+
+?request 		lapis:hasResult		xs:string.
+
+</textarea></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<html>
+<head></head>
+<body>
+<table border="0"><tr><td>
+<textarea rows="60" cols="120">
+@prefix rdf:   		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#"> .
+@prefix owl:   		<http://www.w3.org/2002/07/owl#> .
+@prefix test-owl:   	<http://localhost:8080/Prototyp/Cast/Ontology#> .
+@prefix sp:		<http://surgipedia.sfb125.de/wiki/Special:URIResolver/> .
+@prefix xs:	 	<http://www.w3.org/2001/XMLSchema#> .
+
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasCreator
+test-owl:hasCreator
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Creator and Publisher of Web Service";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	sp:user.
+
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasAbstract
+test-owl:hasAbstract
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Abstract of Service Functionality";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	xs:string.
+		
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasServiceDescription
+test-owl:hasServiceDescription
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Service Description of Input and Output Patterns";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	xs:string.
+		
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasInput
+test-owl:hasInput
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Description of Input Parameters";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	xs:string.
+
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasOutput
+test-owl:hasOutput
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Description of Output";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	xs:string.
+		
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasExampleRequest
+test-owl:hasExampleRequest
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Example Request for Invocation";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	xs:string.
+		
+		
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasExampleResponse
+test-owl:hasExampleResponse
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Example Response";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	xs:string.
+		
+
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#Request
+test-owl:Request
+		rdf:type	rdfs:Class;
+		rdfs:comment 	"The class containing all requests.".
+	
+	
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasInputImage	
+test-owl:hasInputImage
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Input Image to be casted.";
+		rdfs:domain 	test-owl:Request;
+		rdfs:range 	xs:string.
+
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasOutputImagePath		
+test-owl:hasOutputImagePath
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Output Path of casted Image.";
+		rdfs:domain 	test-owl:Request;
+		rdfs:range 	xs:string.	
+
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasResult		
+test-owl:hasResult
+		rdf:type	rdf:Property;
+		rdfs:comment	"Result of Image Casting.";
+		rdfs:domain	test-owl:Request;
+		rdfs:range	xs:string.
+		
+		
+		
+		
+	
+
+</textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/>Example:<a href="RDF_Input_Example.xml">RDF In</a> and <a href="RDF_Output_Example.xml">RDF Out</a></td></tr></table></body>
+</html>

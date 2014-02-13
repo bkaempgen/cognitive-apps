@@ -1,0 +1,38 @@
+<html>
+<head></head>
+<body>
+<table border="0"><tr><td>
+<textarea rows="40" cols="120">@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix test:    <http://localhost:8080/Prototyp/CalcServlet#> .
+@prefix xs:	 <http://www.w3.org/2001/XMLSchema#>.
+
+
+test:Request
+		rdf:type	rdfs:Class;
+		rdfs:comment 	"The class containing all requests.".
+	
+	
+test:hasFirstAddend
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"First Addend of Calculation.";
+		rdfs:domain 	test:Request;
+		rdfs:range 	xs:integer.
+		
+test:hasSecondAddend
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Second Addend of Calculation.";
+		rdfs:domain 	test:Request;
+		rdfs:range 	xs:integer.	
+		
+test:hasResult
+		rdf:type	rdf:Property;
+		rdfs:comment	"Result of Calculation.";
+		rdfs:domain	test:Request;
+		rdfs:range	xs:integer.
+		
+	
+
+</textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/>Example:<a href="RDF_Input_Example.xml">RDF In</a> and <a href="RDF_Output_Example.xml">RDF Out</a></td></tr></table></body>
+</html>

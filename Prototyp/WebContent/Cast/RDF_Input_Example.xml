@@ -1,0 +1,11 @@
+<rdf:RDF
+    xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dummy="http://localhost:8080/Prototyp/Ontology/Dummy#"> 
+  
+<rdf:Description rdf:about="http://www.example.com/Request_01_Example">
+    <rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+	<dummy:InputImage>C:/Users/phiL/Desktop/T1.nrrd</dummy:InputImage>
+	<dummy:OutputImagePath>C:/Users/phiL/Desktop/cast_result.nrrd</dummy:OutputImagePath>
+</rdf:Description>
+</rdf:RDF>

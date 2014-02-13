@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>Registration</category>
+  <title>Batch Registration</title>
+  <description> Registration of several files in a folder to one reference image, including derived resources such as segmentations etc.
+  </description>
+  <contributor>MBI</contributor>
+  <parameters>
+    <label>Registration Input</label>
+    <description>Set the input and output folders</description>
+    <string>
+      <name>refFileVar</name>
+      <flag>f</flag>
+      <description>Reference File (fixed image)</description>
+      <label>Suffix Reference File</label>
+    </string>
+    <directory>
+      <name>inputFolderVar</name>
+      <description>Input folder with moving images</description>
+      <flag>i</flag>
+      <label>Input Folder</label>
+    </directory>
+    <string>
+      <name>derPatternVar</name>
+      <description>Suffixes by which derived resources are determined. Comma separated, no spaces!</description>
+      <label>Derived resource suffixes.</label>
+      <flag>d</flag>
+      <default>_gtv.nrrd,_ce.nrrd</default>
+    </string>
+    <string>
+      <name>regPattern</name>
+      <description>Suffix which determines files that are to be registered</description>
+      <label>Input suffix</label>
+      <flag>m</flag>
+      <default>_T2.nrrd</default>
+    </string>
+    <directory>
+      <name>outputFolderVar</name>
+      <description>Output folder for registered images</description>
+      <flag>o</flag>
+      <label>Output Folder</label>
+    </directory>
+    <boolean>
+      <name>useMasking</name>
+      <flag>u</flag>
+      <description>Use Segmentations to mask out areas for registrations</description>
+      <label>Exclude segmentation area</label>
+    <default>false</default>
+    </boolean>
+    <string>
+      <name>resampleFile</name>
+      <flag>r</flag>
+      <description>Reference file for resampling (opt)</description>
+      <label>Resampling reference file</label>
+    </string>
+  </parameters>
+</executable>

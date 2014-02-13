@@ -1,0 +1,52 @@
+<html>
+<head></head>
+<body>
+<table border="0"><tr><td>
+<textarea rows="50" cols="120">@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix test:    <http://localhost:8080/Prototyp/SFBServletMeanFree#> .
+@prefix xs:	 <http://www.w3.org/2001/XMLSchema#> .
+
+
+###  http://localhost:8080/Prototyp/SFBServletMeanFree#Request
+test:Request
+		rdf:type	rdfs:Class;
+		rdfs:comment 	"The class containing all requests.".
+	
+	
+###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasInputImage	
+test:hasInputImage
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Input Image to be normalized.";
+		rdfs:domain 	test:Request;
+		rdfs:range 	xs:string.
+
+
+###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasInputMaskImage		
+test:hasInputMaskImage
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Input Image Mask for Normalization or none.";
+		rdfs:domain 	test:Request;
+		rdfs:range 	xs:string.	
+
+
+###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasOutputImagePath		
+test:hasOutputImagePath
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Output Path of normalized Image.";
+		rdfs:domain 	test:Request;
+		rdfs:range 	xs:string.	
+
+
+###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasResult		
+test:hasResult
+		rdf:type	rdf:Property;
+		rdfs:comment	"Result of Image Normalization.";
+		rdfs:domain	test:Request;
+		rdfs:range	xs:string.
+		
+	
+
+</textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/>Example:<a href="RDF_Input_Example.xml">RDF In</a> and <a href="RDF_Output_Example.xml">RDF Out</a></td></tr></table></body>
+</html>

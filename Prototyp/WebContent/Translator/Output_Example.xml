@@ -1,0 +1,93 @@
+<rdf:RDF 
+	xmlns:ctk="http://localhost:8080/Prototyp/Ontology/CTK#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543#i">
+	<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#executable"/>
+	<ctk:hasTitle>Batch Registration</ctk:hasTitle>
+	<ctk:hasDescription> Registration of several files in a folder to one reference image, including derived resources such as segmentations etc.</ctk:hasDescription>
+	<ctk:hasCategory>Registration</ctk:hasCategory>
+	<ctk:hasContributor>MBI</ctk:hasContributor>
+	<ctk:hasParameterGroup>
+		<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552#i">
+			<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameterGroup"/>
+			<ctk:hasParameterGroupLabel>Registration Input</ctk:hasParameterGroupLabel>
+			<ctk:hasParameterGroupDescription>Set the input and output folders</ctk:hasParameterGroupDescription>
+			<ctk:hasParameter>
+				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65560#i">
+					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+					<ctk:hasParameterType>string</ctk:hasParameterType>
+					<ctk:hasParameterName>refFileVar</ctk:hasParameterName>
+					<ctk:hasParameterFlag>f</ctk:hasParameterFlag>
+					<ctk:hasParameterDescription>Reference File (fixed image)</ctk:hasParameterDescription>
+					<ctk:hasParameterLabel>Suffix Reference File</ctk:hasParameterLabel>
+				</rdf:Description>
+			</ctk:hasParameter>
+			<ctk:hasParameter>
+				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65575#i">
+					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+					<ctk:hasParameterType>directory</ctk:hasParameterType>
+					<ctk:hasParameterName>inputFolderVar</ctk:hasParameterName>
+					<ctk:hasParameterFlag>i</ctk:hasParameterFlag>
+					<ctk:hasParameterDescription>Input folder with moving images</ctk:hasParameterDescription>
+					<ctk:hasParameterLabel>Input Folder</ctk:hasParameterLabel>
+				</rdf:Description>
+			</ctk:hasParameter>
+			<ctk:hasParameter>
+				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65590#i">
+					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+					<ctk:hasParameterType>string</ctk:hasParameterType>
+					<ctk:hasParameterName>derPatternVar</ctk:hasParameterName>
+					<ctk:hasParameterFlag>d</ctk:hasParameterFlag>
+					<ctk:hasParameterDescription>Suffixes by which derived resources are determined. Comma separated, no spaces!</ctk:hasParameterDescription>
+					<ctk:hasParameterLabel>Derived resource suffixes.</ctk:hasParameterLabel>
+					<ctk:hasParameterDefault>_gtv.nrrd,_ce.nrrd</ctk:hasParameterDefault>
+				</rdf:Description>
+			</ctk:hasParameter>
+			<ctk:hasParameter>
+				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65608#i">
+					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+					<ctk:hasParameterType>string</ctk:hasParameterType>
+					<ctk:hasParameterName>regPattern</ctk:hasParameterName>
+					<ctk:hasParameterFlag>m</ctk:hasParameterFlag>
+					<ctk:hasParameterDescription>Suffix which determines files that are to be registered</ctk:hasParameterDescription>
+					<ctk:hasParameterLabel>Input suffix</ctk:hasParameterLabel>
+					<ctk:hasParameterDefault>_T2.nrrd</ctk:hasParameterDefault>
+				</rdf:Description>
+			</ctk:hasParameter>
+			<ctk:hasParameter>
+				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65626#i">
+					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+					<ctk:hasParameterType>directory</ctk:hasParameterType>
+					<ctk:hasParameterName>outputFolderVar</ctk:hasParameterName>
+					<ctk:hasParameterFlag>o</ctk:hasParameterFlag>
+					<ctk:hasParameterDescription>Output folder for registered images</ctk:hasParameterDescription>
+					<ctk:hasParameterLabel>Output Folder</ctk:hasParameterLabel>
+				</rdf:Description>
+			</ctk:hasParameter>
+			<ctk:hasParameter>
+				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65641#i">
+					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+					<ctk:hasParameterType>boolean</ctk:hasParameterType>
+					<ctk:hasParameterName>useMasking</ctk:hasParameterName>
+					<ctk:hasParameterFlag>u</ctk:hasParameterFlag>
+					<ctk:hasParameterDescription>Use Segmentations to mask out areas for registrations</ctk:hasParameterDescription>
+					<ctk:hasParameterLabel>Exclude segmentation area</ctk:hasParameterLabel>
+					<ctk:hasParameterDefault>false</ctk:hasParameterDefault>
+				</rdf:Description>
+			</ctk:hasParameter>
+			<ctk:hasParameter>
+				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65659#i">
+					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+					<ctk:hasParameterType>string</ctk:hasParameterType>
+					<ctk:hasParameterName>resampleFile</ctk:hasParameterName>
+					<ctk:hasParameterFlag>r</ctk:hasParameterFlag>
+					<ctk:hasParameterDescription>Reference file for resampling (opt)</ctk:hasParameterDescription>
+					<ctk:hasParameterLabel>Resampling reference file</ctk:hasParameterLabel>
+				</rdf:Description>
+			</ctk:hasParameter>
+		</rdf:Description>
+	</ctk:hasParameterGroup>
+</rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,111 @@
+<html xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" xmlns:ctk="http://localhost:8080/Prototyp/Ontology/CTK#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<table border="0">
+<tr>
+<td>Namespace:</td><td><textarea rows="7" cols="120">PREFIX rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+PREFIX owl: 	<http://www.w3.org/2002/07/owl#>.
+PREFIX ctk: 	<http://localhost:8080/Prototyp/Ontology/CTK#>.
+PREFIX lapis: 	<http://localhost:8080/Prototyp/Ontology/Lapis#>.
+PREFIX xs: 	<http://www.w3.org/2001/XMLSchema#>.
+PREFIX dummy: 	<http://localhost:8080/Prototyp/Ontology/Dummy#>.
+</textarea></td>
+</tr>
+<tr>
+<td>Input:</td><td><textarea rows="20" cols="120">?request		rdf:type			lapis:Request.
+?request		dummy:refFileVar		?refFileVar. 
+?request		dummy:inputFolderVar		?inputFolderVar. 
+?request		dummy:derPatternVar		?derPatternVar. 
+?request		dummy:regPattern		?regPattern. 
+?request		dummy:outputFolderVar		?outputFolderVar. 
+?request		dummy:useMasking		?useMasking. 
+?request		dummy:resampleFile		?resampleFile. 
+
+?refFileVar		rdf:type			lapis:string. 
+?inputFolderVar		rdf:type			lapis:directory. 
+?derPatternVar		rdf:type			lapis:string. 
+?regPattern		rdf:type			lapis:string. 
+?outputFolderVar	rdf:type			lapis:directory. 
+?useMasking		rdf:type			lapis:boolean. 
+?resampleFile		rdf:type			lapis:string. 
+</textarea></td><td style="padding-left:100px"><b><u>TO DO:</u></b>
+<br>-Semantische Beschreibung d. Service unab. von In-/Output (fuer Discovery)<br>-moeglicher Ansatz?!:   humanes Anlegen d. Services in SP und dann Mapping<br>
+</td>
+</tr>
+<tr>
+<td>Output:</td><td><textarea rows="20" cols="120">?request		rdf:type			lapis:Request.
+?request		dummy:refFileVar		?refFileVar. 
+?request		dummy:inputFolderVar		?inputFolderVar. 
+?request		dummy:derPatternVar		?derPatternVar. 
+?request		dummy:regPattern		?regPattern. 
+?request		dummy:outputFolderVar		?outputFolderVar. 
+?request		dummy:useMasking		?useMasking. 
+?request		dummy:resampleFile		?resampleFile. 
+
+?refFileVar		rdf:type			lapis:string. 
+?inputFolderVar		rdf:type			lapis:directory. 
+?derPatternVar		rdf:type			lapis:string. 
+?regPattern		rdf:type			lapis:string. 
+?outputFolderVar	rdf:type			lapis:directory. 
+?useMasking		rdf:type			lapis:boolean. 
+?resampleFile		rdf:type			lapis:string. 
+
+?request 		lapis:hasResult			xs:string.</textarea></td>
+</tr>
+<tr>
+<td>Ontology:</td><td><textarea rows="50" cols="120">###  http://localhost:8080/Prototyp/Ontology/Dummy#refFileVar
+dummy:refFileVar
+		rdf:type	rdf:Property;
+		rdfs:comment	"Reference File (fixed image)";
+		rdfs:domain	lapis:Request;
+		rdfs:range	lapis:string.
+
+###  http://localhost:8080/Prototyp/Ontology/Dummy#inputFolderVar
+dummy:inputFolderVar
+		rdf:type	rdf:Property;
+		rdfs:comment	"Input folder with moving images";
+		rdfs:domain	lapis:Request;
+		rdfs:range	lapis:directory.
+
+###  http://localhost:8080/Prototyp/Ontology/Dummy#derPatternVar
+dummy:derPatternVar
+		rdf:type	rdf:Property;
+		rdfs:comment	"Suffixes by which derived resources are determined. Comma separated, no spaces!";
+		rdfs:domain	lapis:Request;
+		rdfs:range	lapis:string.
+
+###  http://localhost:8080/Prototyp/Ontology/Dummy#regPattern
+dummy:regPattern
+		rdf:type	rdf:Property;
+		rdfs:comment	"Suffix which determines files that are to be registered";
+		rdfs:domain	lapis:Request;
+		rdfs:range	lapis:string.
+
+###  http://localhost:8080/Prototyp/Ontology/Dummy#outputFolderVar
+dummy:outputFolderVar
+		rdf:type	rdf:Property;
+		rdfs:comment	"Output folder for registered images";
+		rdfs:domain	lapis:Request;
+		rdfs:range	lapis:directory.
+
+###  http://localhost:8080/Prototyp/Ontology/Dummy#useMasking
+dummy:useMasking
+		rdf:type	rdf:Property;
+		rdfs:comment	"Use Segmentations to mask out areas for registrations";
+		rdfs:domain	lapis:Request;
+		rdfs:range	lapis:boolean.
+
+### http://localhost:8080/Prototyp/Ontology/Dummy#resampleFile
+dummy:resampleFile
+		rdf:type	rdf:Property;
+		rdfs:comment	"Reference file for resampling (opt)";
+		rdfs:domain	lapis:Request;
+		rdfs:range	lapis:string.
+
+</textarea></td>
+</tr>
+</table>
+</body>
+</html>

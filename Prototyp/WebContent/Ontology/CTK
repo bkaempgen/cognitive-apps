@@ -1,0 +1,198 @@
+@prefix rdf:   		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#"> .
+@prefix owl:   		<http://www.w3.org/2002/07/owl#> .
+@prefix ctk:   		<http://localhost:8080/Prototyp/Ontology/CTK#> .
+@prefix xs:	 	<http://www.w3.org/2001/XMLSchema#> .
+
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#executable
+ctk:executable
+		rdf:type	rdfs:Class;
+		rdfs:comment 	"The class containing all executables.".
+		
+###  http://localhost:8080/Prototyp/Ontology/CTK#parameterGroup	
+ctk:parameterGroup
+		rdf:type	rdfs:Class;
+		rdfs:comment 	"The class containing all parameter groups.".
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#parameter		
+ctk:parameter
+		rdf:type	rdfs:Class;
+		rdfs:comment 	"The class containing all parameters.".		
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasCategory						
+ctk:hasCategory
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Classifies the module (e.g. Filtering, Segmentation).";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasTitle		
+ctk:hasTitle
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Title of executable.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasDescription		
+ctk:hasDescription
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Description of executable.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasVersion		
+ctk:hasVersion
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Version of executable.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasDocumentationURL		
+ctk:hasDocumentationURL
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"A URL pointing to a documentation or home page of the module.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasLicense		
+ctk:hasLicense
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"The type of license or a URL containing the license.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasContributor
+ctk:hasContributor
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"The author(s) of the executable.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasAcknowledgements		
+ctk:hasAcknowledgements
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Acknowledgements for funding agency, employer, colleague, etc.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	xs:string.
+		
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterGroup
+ctk:hasParameterGroup
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Parameter group of executable.";
+		rdfs:domain 	ctk:exectuable;
+		rdfs:range 	ctk:parameterGroup.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameter		
+ctk:hasParameter
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Parameters of parameter group.";
+		rdfs:domain 	ctk:parameterGroup;
+		rdfs:range 	ctk:parameter.
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterGroupLabel
+ctk:hasParameterGroupLabel
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Label of parameter group.";
+		rdfs:domain 	ctk:parameterGroup;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterGroupDescription		
+ctk:hasParameterGroupDescription
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Description of parameter group.";
+		rdfs:domain 	ctk:parameterGroup;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterType		
+ctk:hasParameterType
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Type of parameter.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterName		
+ctk:hasParameterName
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Name of parameter.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterFlag		
+ctk:hasParameterFlag
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Flag of parameter.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterLongflag		
+ctk:hasParameterLongflag
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Longflag of parameter.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterIndex		
+ctk:hasParameterIndex
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Index of parameter.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:nonNegativeInteger.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterDescription		
+ctk:hasParameterDescription
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"A brief description of the parameter";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterLabel		
+ctk:hasParameterLabel
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"A label for parameter.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterDefault		
+ctk:hasParameterDefault
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"A default value for the parameter. The default must be a type that is compatible with the parameter type. 
+						The vector parameters are specified as comma separated values of the atomic parameter type.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterChannel		
+ctk:hasParameterChannel
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Specifies whether the parameter is an input or output parameter. Output parameters can for example specify
+						file paths where to write output data (e.g. using the "image" element) or they can represent "simple return
+						parameters", indicated by providing an "index" of 1000. The current values of such simple return parameters
+						are not passed to the module during its execution. Rather, the module itself reports these parameter values 
+						during execution.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+
+###  http://localhost:8080/Prototyp/Ontology/CTK#hasParameterConstraints		
+ctk:hasParameterConstraints
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Constraints on the domain of valid values.";
+		rdfs:domain 	ctk:parameter;
+		rdfs:range 	xs:string.
+		
+
+
+
+		
+
+		
+		
+		
+		
+
+
+		
+		
