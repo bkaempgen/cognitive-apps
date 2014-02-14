@@ -1,0 +1,31 @@
+<html>
+<head></head>
+<body>
+<table border="0"><tr><td>
+<textarea rows="60" cols="120">
+@prefix rdf:   		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#"> .
+@prefix cast:   	<http://localhost:8080/Prototyp/Cast/Ontology#> .
+@prefix lapis:   	<http://localhost:8080/Prototyp/Ontology/Lapis#> .
+@prefix xs:	 	<http://www.w3.org/2001/XMLSchema#> .
+
+	
+	
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasInputImage	
+cast:hasInputImage
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Input Image to be casted.";
+		rdfs:domain 	lapis:Request;
+		rdfs:range 	lapis:image.
+
+
+###  http://localhost:8080/Prototyp/Cast/Ontology#hasOutputImagePath		
+cast:hasOutputImagePath
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Output Path of casted Image.";
+		rdfs:domain 	lapis:Request;
+		rdfs:range 	lapis:directory.	
+
+
+</textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/>Example:<a href="RDF_Input_Example.xml">RDF In</a> and <a href="RDF_Output_Example.xml">RDF Out</a></td></tr></table></body>
+</html>
