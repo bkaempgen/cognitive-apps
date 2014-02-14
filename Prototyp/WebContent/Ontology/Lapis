@@ -20,6 +20,13 @@ lapis:hasAbstract
 		rdfs:domain 	sp:Category:Coginitive_App;
 		rdfs:range 	xsd:string.
 
+###  http://localhost:8080/Prototyp/Ontology/Lapis#hasSourceCode
+lapis:hasSourceCode
+		rdf:type 	rdf:Property;
+		rdfs:comment 	"Link to Source Code";
+		rdfs:domain 	sp:Category:Coginitive_App;
+		rdfs:range 	xsd:string.		
+
 ###  http://localhost:8080/Prototyp/Ontology/Lapis#hasServiceDescription
 lapis:hasServiceDescription
 		rdf:type 	rdf:Property;

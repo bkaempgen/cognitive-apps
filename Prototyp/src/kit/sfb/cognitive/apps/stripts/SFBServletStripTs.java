@@ -16,6 +16,7 @@ import kit.sfb.cognitive.apps.helper.Helper;
 
 import org.xml.sax.InputSource;
 
+import com.google.common.io.CharStreams;
 import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 
 /**
@@ -36,79 +37,33 @@ public class SFBServletStripTs extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		response.setContentType("text/html");
+		response.setContentType("text/xml");
 		PrintWriter writer = response.getWriter();
-
-		writer.println("<html>");
-		writer.println("<head></head>");
-		writer.println("<body>");
-		writer.println("<table border=\"0\"><tr><td>");
-		writer.println("<textarea rows=\"65\" cols=\"120\">@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema/> .");
-		writer.println("@prefix owl:     <http://www.w3.org/2002/07/owl#> .");
-		writer.println("@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .");
-		writer.println("@prefix test:    <http://localhost:8080/Prototyp/SFBServletStripTs#> .");
-		writer.println("@prefix xs:	 <http://www.w3.org/2001/XMLSchema#> .");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletStripTs#Request");
-		writer.println("test:Request");
-		writer.println("		rdf:type	rdfs:Class;");
-		writer.println("		rdfs:comment 	\"The class containing all requests.\".");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletStripTs#hasInputBrainAtlasImage");
-		writer.println("test:hasInputBrainAtlasImage");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Input Atlas Image for Stripping.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletStripTs#hasInputBrainAtlasMask");
-		writer.println("test:hasInputBrainAtlasMask");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Input Atlas Mask for Stripping.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletStripTs#hasInputImage");
-		writer.println("test:hasInputImage");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Input Image to be stripped.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletStripTs#hasOutputMaskPath	");
-		writer.println("test:hasOutputMaskPath");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Output Path of stripped Mask.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletStripTs#hasOutputImagePath");
-		writer.println("test:hasOutputImagePath");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Output Path of stripped Image.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletStripTs#hasResult");
-		writer.println("test:hasResult");
-		writer.println("		rdf:type	rdf:Property;");
-		writer.println("		rdfs:comment	\"Result of Image Stripping.\";");
-		writer.println("		rdfs:domain	test:Request;");
-		writer.println("		rdfs:range	xs:string.");
-		writer.println("</textarea></td><td style=\"padding-left:100px\">RDF can be POSTed to <a href=\"StripTs/description/index.html\">service</a><br/>Example:<a href=\"StripTs/RDF_Input_Example.xml\">RDF In</a> and <a href=\"StripTs/RDF_Output_Example.xml\">RDF Out</a></td></tr></table></body>");
-		writer.println("</html>");
-
+		writer.println("<rdf:RDF ");
+		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
+		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
+		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
+		writer.println("xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
+		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletStripTs#i\">");
+		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
+		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-StripTs-Service</rdfs:label>");
+		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-StripTs-Service</rdfs:label>");
+		writer.println("<owl:sameAs	rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/StripTs\"/>");
+		writer.println("<lapis:hasCreator rdf:resource=\"http://surgipedia.sfb125.de/wiki/User:Philipp_G\"/>");
+		writer.println("<lapis:hasAbstract xml:lang=\"de\">Segmentierung des Gehirns einer Kopfaufnahme.</lapis:hasAbstract>");
+		writer.println("<lapis:hasAbstract xml:lang=\"en\">Segmentation of brain in a head scan.</lapis:hasAbstract>");
+		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
+		writer.println("<lapis:hasServiceDescription>http://localhost:8080/Prototyp/StripTs/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasInputDescription>T1 image of patient, atlasImage and atlasMask.</lapis:hasInputDescription>");
+		writer.println("<lapis:hasOutputDescription>Stripped image and mask of T1 patient.</lapis:hasOutputDescription>");
+		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/StripTs/RDF_Input_Example.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/StripTs/RDF_Output_Example.xml</lapis:hasExampleResponse>");
+		writer.println("</rdf:Description>");
+		writer.println("</rdf:RDF>");
 		writer.close();
 	}
 
@@ -116,19 +71,26 @@ public class SFBServletStripTs extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		BufferedReader input = new BufferedReader(new StringReader(
-				request.getParameter("RequestInput")));
+		BufferedReader input = null;
+
+		// Parse input according to request method
+		if (request.getParameter("RequestInput") != null) {
+			input = new BufferedReader(new StringReader(request.getParameter("RequestInput")));
+			System.out.println("+++++++JSP++++++++");
+			System.out.println(request.getParameter("RequestInput"));
+		} else {
+			input = new BufferedReader(new StringReader(CharStreams.toString(request.getReader())));
+			System.out.println("++++++Client++++++");
+			System.out.println(CharStreams.toString(request.getReader()));
+		}
 
 		try {
 			RequestDataStripTs requestDataStripTs = importRequestDataStripTs(input);
 
-			String inputBrainAtlasImage = requestDataStripTs
-					.getInputBrainAtlasImage();
-			String inputBrainAtlasMask = requestDataStripTs
-					.getInputBrainAtlasMask();
+			String inputBrainAtlasImage = requestDataStripTs.getInputBrainAtlasImage();
+			String inputBrainAtlasMask = requestDataStripTs.getInputBrainAtlasMask();
 			String inputImage = requestDataStripTs.getInputImage();
 			String outputMaskPath = requestDataStripTs.getOutputMaskPath();
 			String outputImagePath = requestDataStripTs.getOutputImagePath();
@@ -145,37 +107,35 @@ public class SFBServletStripTs extends HttpServlet {
 			// Response
 			response.setContentType("text/xml");
 
-			String rdf = "<rdf:RDF xmlns:test=\"http://localhost:8080/Prototyp/SFBServletStripTs#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">"
+			String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"http://localhost:8080/Prototyp/StripTs/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestDataStripTs.getRequestURI()
 					+ "\">"
-					+ "<rdf:type rdf:resource=\"&amp;test;Request\"/>"
-					+ "<test:hasInputBrainAtlasImage>"
+					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+					+ "<stripts:hasInputBrainAtlasImage>"
 					+ requestDataStripTs.getInputBrainAtlasImage()
-					+ "</test:hasInputBrainAtlasImage>"
-					+ "<test:hasInputBrainAtlasMask>"
+					+ "</stripts:hasInputBrainAtlasImage>"
+					+ "<stripts:hasInputBrainAtlasMask>"
 					+ requestDataStripTs.getInputBrainAtlasMask()
-					+ "</test:hasInputBrainAtlasMask>"
-					+ "<test:hasInputImage>"
+					+ "</stripts:hasInputBrainAtlasMask>"
+					+ "<stripts:hasInputImage>"
 					+ requestDataStripTs.getInputImage()
-					+ "</test:hasInputImage>"
-					+ "<test:hasOutputMaskPath>"
+					+ "</stripts:hasInputImage>"
+					+ "<stripts:hasOutputMaskPath>"
 					+ requestDataStripTs.getOutputMaskPath()
-					+ "</test:hasOutputMaskPath>"
-					+ "<test:hasOutputImagePath>"
+					+ "</stripts:hasOutputMaskPath>"
+					+ "<stripts:hasOutputImagePath>"
 					+ requestDataStripTs.getOutputImagePath()
-					+ "</test:hasOutputImagePath>"
-					+ "<test:hasResult>"
+					+ "</stripts:hasOutputImagePath>"
+					+ "<lapis:hasResult>"
 					+ result
-					+ "</test:hasResult>"
-					+ "</rdf:Description></rdf:RDF>";
+					+ "</lapis:hasResult>" + "</rdf:Description></rdf:RDF>";
 
 			System.out.println(rdf);
 			response.getWriter().print(rdf);
 
 		} catch (Throwable t) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND,
-					"corrupt input");
+			response.sendError(HttpServletResponse.SC_NOT_FOUND, "corrupt input");
 		}
 	}
 
@@ -188,19 +148,14 @@ public class SFBServletStripTs extends HttpServlet {
 			parser.setContentHandler(handler);
 			parser.parse(new InputSource(reader));
 			// new ByteArrayInputStream(data.getBytes())));
-			if (handler.getError() || handler.getInputBrainAtlasImage() == null
-					|| handler.getInputBrainAtlasMask() == null
-					|| handler.getInputImage() == null
-					|| handler.getOutputMaskPath() == null
-					|| handler.getOutputImagePath() == null)
+			if (handler.getError() || handler.getInputBrainAtlasImage() == null || handler.getInputBrainAtlasMask() == null
+					|| handler.getInputImage() == null || handler.getOutputMaskPath() == null || handler.getOutputImagePath() == null)
 				return null;
 		} catch (Throwable t) {
 			return null;
 		}
-		return new RequestDataStripTs(handler.getInputBrainAtlasImage(),
-				handler.getInputBrainAtlasMask(), handler.getInputImage(),
-				handler.getOutputMaskPath(), handler.getOutputImagePath(),
-				handler.getRequestURI());
+		return new RequestDataStripTs(handler.getInputBrainAtlasImage(), handler.getInputBrainAtlasMask(), handler.getInputImage(),
+				handler.getOutputMaskPath(), handler.getOutputImagePath(), handler.getRequestURI());
 	}
 
 }

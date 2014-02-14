@@ -5,7 +5,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class RDImportHandlerCast extends DefaultHandler {
-	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/Ontology/Dummy#"; 
+	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/Cast/Ontology#"; 
 	private boolean error=false;
 	private boolean hasInputImage = false;
 	private boolean hasOutputImagePath = false;
@@ -20,8 +20,8 @@ public class RDImportHandlerCast extends DefaultHandler {
 	
 	
 	public void startElement(String namespaceURI, String localName, String qName, Attributes atts) {
-		if (localName.equalsIgnoreCase("InputImage") && namespaceURI.equals(NAMESPACE_URI)) hasInputImage = true;
-		if (localName.equalsIgnoreCase("OutputImagePath") && namespaceURI.equals(NAMESPACE_URI)) hasOutputImagePath = true;
+		if (localName.equalsIgnoreCase("hasInputImage") && namespaceURI.equals(NAMESPACE_URI)) hasInputImage = true;
+		if (localName.equalsIgnoreCase("hasOutputImagePath") && namespaceURI.equals(NAMESPACE_URI)) hasOutputImagePath = true;
 
 		
 		if(localName.equalsIgnoreCase("description") && !hasInputImage && !hasOutputImagePath){
@@ -32,8 +32,8 @@ public class RDImportHandlerCast extends DefaultHandler {
 	}
 
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		if (localName.equalsIgnoreCase("InputImage")) hasInputImage = false;
-		if (localName.equalsIgnoreCase("OutputImagePath")) hasOutputImagePath = false;
+		if (localName.equalsIgnoreCase("hasInputImage")) hasInputImage = false;
+		if (localName.equalsIgnoreCase("hasOutputImagePath")) hasOutputImagePath = false;
 	}
 
 	public void characters(char[] ch, int start, int length) throws SAXException {

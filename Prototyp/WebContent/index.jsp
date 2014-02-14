@@ -32,12 +32,12 @@
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Cast.jsp">JSP</a></td>
 		</tr>
 		<tr>
-			<td><a href="SFBServletMeanFree">MeanFree-Service:</a></td>
+			<td><a href="SFBServletMeanFree#i">MeanFree-Service:</a></td>
 			<td/>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/MeanFree.jsp">JSP</a></td>
 		</tr>
 		<tr>
-			<td><a href="SFBServletStripTs">StripTs:</a></td>
+			<td><a href="SFBServletStripTs#i">StripTs:</a></td>
 			<td/>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/StripTs.jsp">JSP</a></td>
 		</tr>

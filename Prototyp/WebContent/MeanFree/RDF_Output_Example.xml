@@ -1,12 +1,13 @@
 <rdf:RDF
-    xmlns:test="http://localhost:8080/Prototyp/SFBServletMeanFree#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> 
+    xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:meanfree="http://localhost:8080/Prototyp/MeanFree/Ontology#"> 
   
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-    <rdf:type rdf:resource="&amp;test;Request"/>
-	<test:hasInputImage>C:/Users/phiL/Desktop/T1.nrrd</test:hasInputImage>
-	<test:hasInputMaskImage>none</test:hasInputMaskImage>
-	<test:hasOutputImagePath>C:/Users/phiL/Desktop/meanfree_output_image.nrrd</test:hasOutputImagePath>
-	<test:hasResult>Success! Download the file from: C:/Users/phiL/Desktop/meanfree_output_image.nrrd</test:hasResult>
+    <rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+	<meanfree:hasInputImage>C:/Users/phiL/Desktop/T1.nrrd</meanfree:hasInputImage>
+	<meanfree:hasInputMaskImage>none</meanfree:hasInputMaskImage>
+	<meanfree:hasOutputImagePath>C:/Users/phiL/Desktop/meanfree_output_image.nrrd</meanfree:hasOutputImagePath>
+	<lapis:hasResult>Success! Download the file(s) from: C:/Users/phiL/Desktop/meanfree_output_image.nrrd</lapis:hasResult>
 </rdf:Description>
 </rdf:RDF>

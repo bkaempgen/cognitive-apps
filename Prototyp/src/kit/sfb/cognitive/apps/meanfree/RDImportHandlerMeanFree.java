@@ -5,7 +5,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class RDImportHandlerMeanFree extends DefaultHandler {
-	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/SFBServletMeanFree#";
+	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/MeanFree/Ontology#";
 	private boolean error = false;
 	private boolean hasInputImage = false;
 	private boolean hasInputMaskImage = false;

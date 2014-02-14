@@ -8,7 +8,7 @@
 PREFIX rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 PREFIX lapis: 	<http://localhost:8080/Prototyp/Ontology/Lapis#>.
 PREFIX xs:	<http://www.w3.org/2001/XMLSchema#>.
-PREFIX dummy: 	<http://localhost:8080/Prototyp/Ontology/Dummy#>.
+PREFIX cast: 	<http://localhost:8080/Prototyp/Cast/Ontology#>.
 </textarea></td>
 		</tr>
 
@@ -16,8 +16,8 @@ PREFIX dummy: 	<http://localhost:8080/Prototyp/Ontology/Dummy#>.
 			<td>Input:</td>
 			<td><textarea rows="10" cols="80">
 ?request		rdf:type		lapis:Request.
-?request		dummy:InputImage	?InputImage.
-?request		dummy:OutputImagePath	?OutputImagePath.
+?request		cast:hasInputImage	?InputImage.
+?request		cast:hasOutputImagePath	?OutputImagePath.
 ?InputImage		rdf:type		lapis:image.
 ?OutputImagePath	rdf:type		lapis:directory.
 </textarea></td>
@@ -26,8 +26,8 @@ PREFIX dummy: 	<http://localhost:8080/Prototyp/Ontology/Dummy#>.
 			<td>Output:</td>
 			<td><textarea rows="10" cols="80">
 ?request		rdf:type		lapis:Request.
-?request		dummy:InputImage	?InputImage.
-?request		dummy:OutputImagePath	?OutputImagePath.
+?request		cast:hasInputImage	?InputImage.
+?request		cast:hasOutputImagePath	?OutputImagePath.
 ?InputImage		rdf:type		lapis:image.
 ?OutputImagePath	rdf:type		lapis:directory.
 

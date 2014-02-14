@@ -16,6 +16,7 @@ import kit.sfb.cognitive.apps.helper.Helper;
 
 import org.xml.sax.InputSource;
 
+import com.google.common.io.CharStreams;
 import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 
 /**
@@ -36,62 +37,32 @@ public class SFBServletMeanFree extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("text/xml");
 		PrintWriter writer = response.getWriter();
-
-		writer.println("<html>");
-		writer.println("<head></head>");
-		writer.println("<body>");
-		writer.println("<table border=\"0\"><tr><td>");
-		writer.println("<textarea rows=\"50\" cols=\"120\">@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema/> .");
-		writer.println("@prefix owl:     <http://www.w3.org/2002/07/owl#> .");
-		writer.println("@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .");
-		writer.println("@prefix test:    <http://localhost:8080/Prototyp/SFBServletMeanFree#> .");
-		writer.println("@prefix xs:	 <http://www.w3.org/2001/XMLSchema#> .");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletMeanFree#Request");
-		writer.println("test:Request");
-		writer.println("		rdf:type	rdfs:Class;");
-		writer.println("		rdfs:comment 	\"The class containing all requests.\".");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasInputImage");
-		writer.println("test:hasInputImage");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Input Image to be normalized.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasInputMaskImage");
-		writer.println("test:hasInputMaskImage");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Input Image Mask for Normalization or none.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasOutputImagePath");
-		writer.println("test:hasOutputImagePath");
-		writer.println("		rdf:type 	rdf:Property;");
-		writer.println("		rdfs:comment 	\"Output Path of normalized Image.\";");
-		writer.println("		rdfs:domain 	test:Request;");
-		writer.println("		rdfs:range 	xs:string.");
-		writer.println("");
-		writer.println("");
-		writer.println("###  http://localhost:8080/Prototyp/SFBServletMeanFree#hasResult");
-		writer.println("test:hasResult");
-		writer.println("		rdf:type	rdf:Property;");
-		writer.println("		rdfs:comment	\"Result of Image Normalization.\";");
-		writer.println("		rdfs:domain	test:Request;");
-		writer.println("		rdfs:range	xs:string.");
-		writer.println("</textarea></td><td style=\"padding-left:100px\">RDF can be POSTed to <a href=\"MeanFree/description/index.html\">service</a><br/>Example:<a href=\"MeanFree/RDF_Input_Example.xml\">RDF In</a> and <a href=\"MeanFree/RDF_Output_Example.xml\">RDF Out</a></td></tr></table></body>");
-		writer.println("</html>");
-
+		writer.println("<rdf:RDF ");
+		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
+		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
+		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
+		writer.println("xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
+		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletMeanFree#i\">");
+		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
+		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-MeanFree-Service</rdfs:label>");
+		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-MeanFree-Service</rdfs:label>");
+		writer.println("<owl:sameAs	rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/MeanFree\"/>");
+		writer.println("<lapis:hasCreator rdf:resource=\"http://surgipedia.sfb125.de/wiki/User:Philipp_G\"/>");
+		writer.println("<lapis:hasAbstract xml:lang=\"de\">Normalisierung d. Gewebefaerbung.</lapis:hasAbstract>");
+		writer.println("<lapis:hasAbstract xml:lang=\"en\">Normalization of tissue colour.</lapis:hasAbstract>");
+		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
+		writer.println("<lapis:hasServiceDescription>http://localhost:8080/Prototyp/MeanFree/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasInputDescription>T1 input image of patient and mask image (optional).</lapis:hasInputDescription>");
+		writer.println("<lapis:hasOutputDescription>Normalized t1 image regarding tissue colour.</lapis:hasOutputDescription>");
+		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/MeanFree/RDF_Input_Example.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/MeanFree/RDF_Output_Example.xml</lapis:hasExampleResponse>");
+		writer.println("</rdf:Description>");
+		writer.println("</rdf:RDF>");
 		writer.close();
 
 	}
@@ -100,11 +71,20 @@ public class SFBServletMeanFree extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		BufferedReader input = new BufferedReader(new StringReader(
-				request.getParameter("RequestInput")));
+		BufferedReader input = null;
+
+		// Parse input according to request method
+		if (request.getParameter("RequestInput") != null) {
+			input = new BufferedReader(new StringReader(request.getParameter("RequestInput")));
+			System.out.println("+++++++JSP++++++++");
+			System.out.println(request.getParameter("RequestInput"));
+		} else {
+			input = new BufferedReader(new StringReader(CharStreams.toString(request.getReader())));
+			System.out.println("++++++Client++++++");
+			System.out.println(CharStreams.toString(request.getReader()));
+		}
 
 		try {
 			RequestDataMeanFree requestDataMeanFree = importRequestDataMeanFree(input);
@@ -122,31 +102,26 @@ public class SFBServletMeanFree extends HttpServlet {
 			// Response
 			response.setContentType("text/xml");
 
-			String rdf = "<rdf:RDF xmlns:test=\"http://localhost:8080/Prototyp/SFBServletMeanFree#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">"
+			String rdf ="<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://localhost:8080/Prototyp/MeanFree/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestDataMeanFree.getRequestURI()
 					+ "\">"
-					+ "<rdf:type rdf:resource=\"&amp;test;Request\"/>"
-					+ "<test:hasInputImage>"
+					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+					+ "<meanfree:hasInputImage>"
 					+ requestDataMeanFree.getInputImage()
-					+ "</test:hasInputImage>"
-					+ "<test:hasInputMaskImage>"
+					+ "</meanfree:hasInputImage>"
+					+ "<meanfree:hasInputMaskImage>"
 					+ requestDataMeanFree.getInputMaskImage()
-					+ "</test:hasInputMaskImage>"
-					+ "<test:hasOutputImagePath>"
+					+ "</meanfree:hasInputMaskImage>"
+					+ "<meanfree:hasOutputImagePath>"
 					+ requestDataMeanFree.getOutputImagePath()
-					+ "</test:hasOutputImagePath>"
-					+ "<test:hasResult>"
-					+ result
-					+ "</test:hasResult>"
-					+ "</rdf:Description></rdf:RDF>";
+					+ "</meanfree:hasOutputImagePath>" + "<lapis:hasResult>" + result + "</lapis:hasResult>" + "</rdf:Description></rdf:RDF>";
 
 			System.out.println(rdf);
 			response.getWriter().print(rdf);
 
 		} catch (Throwable t) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND,
-					"corrupt input");
+			response.sendError(HttpServletResponse.SC_NOT_FOUND, "corrupt input");
 		}
 	}
 
@@ -159,15 +134,13 @@ public class SFBServletMeanFree extends HttpServlet {
 			parser.setContentHandler(handler);
 			parser.parse(new InputSource(reader));
 			// new ByteArrayInputStream(data.getBytes())));
-			if (handler.getError() || handler.getInputImage() == null
-					|| handler.getInputMaskImage() == null
+			if (handler.getError() || handler.getInputImage() == null || handler.getInputMaskImage() == null
 					|| handler.getOutputImagePath() == null)
 				return null;
 		} catch (Throwable t) {
 			return null;
 		}
-		return new RequestDataMeanFree(handler.getInputImage(),
-				handler.getInputMaskImage(), handler.getOutputImagePath(),
+		return new RequestDataMeanFree(handler.getInputImage(), handler.getInputMaskImage(), handler.getOutputImagePath(),
 				handler.getRequestURI());
 	}
 

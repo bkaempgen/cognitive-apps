@@ -4,32 +4,33 @@
 <table border="0">
 <tr>
 <td>Namespace: </td>
-<td><textarea rows="4" cols="80">
+<td><textarea rows="5" cols="80">
 PREFIX rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-PREFIX test: 		<http://localhost:8080/Prototyp/SFBServletMeanFree#>.
+PREFIX lapis: 		<http://localhost:8080/Prototyp/Ontology/Lapis#>.
 PREFIX xs:		<http://www.w3.org/2001/XMLSchema#>.
+PREFIX meanfree: 	<http://localhost:8080/Prototyp/MeanFree/Ontology#>.
 </textarea></tr>
 
 <tr><td>Input: </td><td><textarea rows="10" cols="80">
-?request		rdf:type			test:Request.
-?request		test:hasInputImage		?InputImage.
-?request		test:hasInputMaskImage		?InputMaskImage.
-?request		test:hasOutputImagePath		?OutputImagePath.
-?InputImage		rdf:type			xs:string.
-?InputMaskImage 	rdf:type			xs:string.
-?OutputImagePath	rdf:type			xs:string.
+?request		rdf:type			lapis:Request.
+?request		meanfree:hasInputImage		?InputImage.
+?request		meanfree:hasInputMaskImage	?InputMaskImage.
+?request		meanfree:hasOutputImagePath	?OutputImagePath.
+?InputImage		rdf:type			lapis:image.
+?InputMaskImage 	rdf:type			lapis:image
+?OutputImagePath	rdf:type			lapis:directory.
 </textarea></td></tr>
 <tr><td>Output: </td>
 <td><textarea rows="15" cols="80">
-?request		rdf:type			test:Request.
-?request		test:hasInputImage		?InputImage.
-?request		test:hasInputMaskImage		?InputMaskImage.
-?request		test:hasOutputImagePath		?OutputImagePath.
-?InputImage		rdf:type			xs:string.
-?InputMaskImage 	rdf:type			xs:string.
-?OutputImagePath	rdf:type			xs:string.
+?request		rdf:type			lapis:Request.
+?request		meanfree:hasInputImage		?InputImage.
+?request		meanfree:hasInputMaskImage	?InputMaskImage.
+?request		meanfree:hasOutputImagePath	?OutputImagePath.
+?InputImage		rdf:type			lapis:image.
+?InputMaskImage 	rdf:type			lapis:image
+?OutputImagePath	rdf:type			lapis:directory.
 
-?request 		test:hasResult			xs:string.
+?request 		lapis:hasResult			xs:string.
 
 </textarea></td></tr></table>
 </body></html>

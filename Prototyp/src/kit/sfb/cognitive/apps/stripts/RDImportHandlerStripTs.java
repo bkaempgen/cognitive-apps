@@ -5,7 +5,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class RDImportHandlerStripTs extends DefaultHandler {
-	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/SFBServletStripTs#"; 
+	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/StripTs/Ontology#"; 
 	private boolean error=false;
 	private boolean hasInputBrainAtlasImage = false;
 	private boolean hasInputBrainAtlasMask = false;
