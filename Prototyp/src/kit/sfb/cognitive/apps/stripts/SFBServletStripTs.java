@@ -105,7 +105,7 @@ public class SFBServletStripTs extends HttpServlet {
 			String result = Helper.RunCommandLineTool("StripTs", parameters);
 
 			// Response
-			response.setContentType("text/xml");
+			response.setContentType("application/xml");
 
 			String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"http://localhost:8080/Prototyp/StripTs/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""

@@ -100,7 +100,7 @@ public class SFBServletMeanFree extends HttpServlet {
 			String result = Helper.RunCommandLineTool("MeanFree", parameters);
 
 			// Response
-			response.setContentType("text/xml");
+			response.setContentType("application/xml");
 
 			String rdf ="<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://localhost:8080/Prototyp/MeanFree/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
