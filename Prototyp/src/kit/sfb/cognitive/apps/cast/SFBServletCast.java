@@ -45,9 +45,9 @@ public class SFBServletCast extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletCast#i\">");
+		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletCast#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-Cast-Service</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-Cast-Service</rdfs:label>");
@@ -56,11 +56,11 @@ public class SFBServletCast extends HttpServlet {
 		writer.println("<lapis:hasAbstract xml:lang=\"de\">Wandelt gegebenes Inputbild in aequivalentes .nrrd-File um.</lapis:hasAbstract>");
 		writer.println("<lapis:hasAbstract xml:lang=\"en\">Casts a given input image to an aquivalent .nrrd-File.</lapis:hasAbstract>");
 		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
-		writer.println("<lapis:hasServiceDescription>http://localhost:8080/Prototyp/Cast/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasServiceDescription>http://141.52.218.34:8080/Prototyp/Cast/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>Input image to be casted and output image path of casted image.</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Casted image.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/Cast/RDF_Input_Example.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/Cast/RDF_Output_Example.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/Cast/RDF_Input_Example.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/Cast/RDF_Output_Example.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -101,11 +101,11 @@ public class SFBServletCast extends HttpServlet {
 			// Response
 			response.setContentType("application/xml");
 
-			String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://localhost:8080/Prototyp/Cast/Ontology#\">"
+			String rdf = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://141.52.218.34:8080/Prototyp/Cast/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestDataCast.getRequestURI()
 					+ "\">"
-					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+					+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
 					+ "<cast:hasInputImage>"
 					+ requestDataCast.getInputImage()
 					+ "</cast:hasInputImage>"

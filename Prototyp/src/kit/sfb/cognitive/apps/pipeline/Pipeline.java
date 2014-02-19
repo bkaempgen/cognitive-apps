@@ -31,16 +31,16 @@ public class Pipeline {
 		String meanfreeOutputImageFile = "C:/Users/phiL/Desktop/pipeline/meanfree_t1_normalized_image.nrrd";
 
 		// Service URIs
-		String castURI = "http://localhost:8080/Prototyp/SFBServletCast#i";
-		String striptsURI = "http://localhost:8080/Prototyp/SFBServletStripTs";
-		String meanfreeURI = "http://localhost:8080/Prototyp/SFBServletMeanFree";
+		String castURI = "http://141.52.218.34:8080/Prototyp/SFBServletCast#i";
+		String striptsURI = "http://141.52.218.34:8080/Prototyp/SFBServletStripTs";
+		String meanfreeURI = "http://141.52.218.34:8080/Prototyp/SFBServletMeanFree";
 
 		// Requests
 
 		// Cast atlasImage.mha to atlasImage.nrrd
-		String requestXML1 = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://localhost:8080/Prototyp/Cast/Ontology#\">"
+		String requestXML1 = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://141.52.218.34:8080/Prototyp/Cast/Ontology#\">"
 				+ "<rdf:Description rdf:about=\"http://www.example.com/Request_01_Example\">"
-				+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+				+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
 				+ "<cast:hasInputImage>"
 				+ atlasImage
 				+ "</cast:hasInputImage>"
@@ -49,9 +49,9 @@ public class Pipeline {
 				+ "</cast:hasOutputImagePath>" + "</rdf:Description></rdf:RDF>";
 
 		// Cast atlasMask.mha to atlasMask.nrrd
-		String requestXML2 = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://localhost:8080/Prototyp/Cast/Ontology#\">"
+		String requestXML2 = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://141.52.218.34:8080/Prototyp/Cast/Ontology#\">"
 				+ "<rdf:Description rdf:about=\"http://www.example.com/Request_02_Example\">"
-				+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+				+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
 				+ "<cast:hasInputImage>"
 				+ atlasMask
 				+ "</cast:hasInputImage>"
@@ -62,9 +62,9 @@ public class Pipeline {
 
 		// brain segmentation of T1 Image using atlasImage.nrrd and
 		// atlasMask.nrrd
-		String requestXML3 = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:stripts=\"http://localhost:8080/Prototyp/StripTs/Ontology#\">"
+		String requestXML3 = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:stripts=\"http://141.52.218.34:8080/Prototyp/StripTs/Ontology#\">"
 				+ "<rdf:Description rdf:about=\"http://www.example.com/Request_03_Example\">"
-				+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+				+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
 				+ "<stripts:hasInputBrainAtlasImage>"
 				+ castAtlasOutputImageFile
 				+ "</stripts:hasInputBrainAtlasImage>"
@@ -82,9 +82,9 @@ public class Pipeline {
 				+ "</stripts:hasOutputImagePath>" + "</rdf:Description></rdf:RDF>";
 
 		// Normalization of tissue
-		String requestXML4 = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://localhost:8080/Prototyp/MeanFree/Ontology#\">"
+		String requestXML4 = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#\">"
 				+ "<rdf:Description rdf:about=\"http://www.example.com/Request_04_Example\">"
-				+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+				+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
 				+ "<meanfree:hasInputImage>"
 				+ striptsOutputImageFile
 				+ "</meanfree:hasInputImage>"

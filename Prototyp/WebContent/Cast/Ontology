@@ -5,13 +5,13 @@
 <textarea rows="60" cols="120">
 @prefix rdf:   		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#"> .
-@prefix cast:   	<http://localhost:8080/Prototyp/Cast/Ontology#> .
-@prefix lapis:   	<http://localhost:8080/Prototyp/Ontology/Lapis#> .
+@prefix cast:   	<http://141.52.218.34:8080/Prototyp/Cast/Ontology#> .
+@prefix lapis:   	<http://141.52.218.34:8080/Prototyp/Ontology/Lapis#> .
 @prefix xs:	 	<http://www.w3.org/2001/XMLSchema#> .
 
 	
 	
-###  http://localhost:8080/Prototyp/Cast/Ontology#hasInputImage	
+###  http://141.52.218.34:8080/Prototyp/Cast/Ontology#hasInputImage	
 cast:hasInputImage
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Input Image to be casted.";
@@ -19,7 +19,7 @@ cast:hasInputImage
 		rdfs:range 	lapis:image.
 
 
-###  http://localhost:8080/Prototyp/Cast/Ontology#hasOutputImagePath		
+###  http://141.52.218.34:8080/Prototyp/Cast/Ontology#hasOutputImagePath		
 cast:hasOutputImagePath
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Output Path of casted Image.";

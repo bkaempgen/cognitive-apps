@@ -13,7 +13,7 @@ public class Helper {
 	public static String RunCommandLineTool(String servicename,
 			List<String> parameters) throws IOException {
 
-		String mitkCommandLine = "F:/KIT/Master/Masterthesis - MITK/SFB-Files/MITK-2013.09.00-win64/MITK-2013.09.00-win64/bin/mitkBrainStrippingMiniApps.exe";
+		String mitkCommandLine = "C:/Users/phiL/Desktop/SFB-Files/MITK-2013.09.00-win64/MITK-2013.09.00-win64/bin/mitkBrainStrippingMiniApps.exe";
 		String command = mitkCommandLine + " " + servicename;
 
 		// Build command from parameters

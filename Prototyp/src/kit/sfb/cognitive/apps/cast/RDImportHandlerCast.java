@@ -5,7 +5,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class RDImportHandlerCast extends DefaultHandler {
-	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/Cast/Ontology#"; 
+	private final String NAMESPACE_URI = "http://141.52.218.34:8080/Prototyp/Cast/Ontology#"; 
 	private boolean error=false;
 	private boolean hasInputImage = false;
 	private boolean hasOutputImagePath = false;

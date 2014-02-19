@@ -45,9 +45,9 @@ public class SFBServletMeanFree extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletMeanFree#i\">");
+		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletMeanFree#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-MeanFree-Service</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-MeanFree-Service</rdfs:label>");
@@ -56,11 +56,11 @@ public class SFBServletMeanFree extends HttpServlet {
 		writer.println("<lapis:hasAbstract xml:lang=\"de\">Normalisierung d. Gewebefaerbung.</lapis:hasAbstract>");
 		writer.println("<lapis:hasAbstract xml:lang=\"en\">Normalization of tissue colour.</lapis:hasAbstract>");
 		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
-		writer.println("<lapis:hasServiceDescription>http://localhost:8080/Prototyp/MeanFree/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasServiceDescription>http://141.52.218.34:8080/Prototyp/MeanFree/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>T1 input image of patient and mask image (optional).</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Normalized t1 image regarding tissue colour.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/MeanFree/RDF_Input_Example.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/MeanFree/RDF_Output_Example.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/MeanFree/RDF_Input_Example.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/MeanFree/RDF_Output_Example.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -102,11 +102,11 @@ public class SFBServletMeanFree extends HttpServlet {
 			// Response
 			response.setContentType("application/xml");
 
-			String rdf ="<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://localhost:8080/Prototyp/MeanFree/Ontology#\">"
+			String rdf ="<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestDataMeanFree.getRequestURI()
 					+ "\">"
-					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+					+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
 					+ "<meanfree:hasInputImage>"
 					+ requestDataMeanFree.getInputImage()
 					+ "</meanfree:hasInputImage>"

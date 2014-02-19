@@ -5,13 +5,13 @@
 <textarea rows="50" cols="120">@prefix rdfs:    	<http://www.w3.org/2000/01/rdf-schema/> .
 @prefix rdf:   		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#"> .
-@prefix meanfree:   	<http://localhost:8080/Prototyp/MeanFree/Ontology#> .
-@prefix lapis:   	<http://localhost:8080/Prototyp/Ontology/Lapis#> .
+@prefix meanfree:   	<http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#> .
+@prefix lapis:   	<http://141.52.218.34:8080/Prototyp/Ontology/Lapis#> .
 @prefix xs:	 	<http://www.w3.org/2001/XMLSchema#> .
 
 
 	
-###  http://localhost:8080/Prototyp/MeanFree/Ontology#hasInputImage	
+###  http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#hasInputImage	
 meanfree:hasInputImage
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Input Image to be normalized.";
@@ -19,7 +19,7 @@ meanfree:hasInputImage
 		rdfs:range 	lapis:image.
 
 
-###  http://localhost:8080/Prototyp/MeanFree/Ontology#hasInputMaskImage		
+###  http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#hasInputMaskImage		
 meanfree:hasInputMaskImage
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Input Image Mask for Normalization or none.";
@@ -27,7 +27,7 @@ meanfree:hasInputMaskImage
 		rdfs:range 	lapis:image.	
 
 
-###  http://localhost:8080/Prototyp/MeanFree/Ontology#hasOutputImagePath		
+###  http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#hasOutputImagePath		
 meanfree:hasOutputImagePath
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Output Path of normalized Image.";

@@ -68,7 +68,7 @@ public class CalcServlet extends HttpServlet {
 			// Response
 			response.setContentType("text/xml");
 
-			String rdf = "<rdf:RDF xmlns:test=\"http://localhost:8080/Prototyp/CalcServlet#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">"
+			String rdf = "<rdf:RDF xmlns:test=\"http://141.52.218.34:8080/Prototyp/CalcServlet#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestData.getRequestURI()
 					+ "\">"

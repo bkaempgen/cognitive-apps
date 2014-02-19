@@ -5,12 +5,12 @@
 <textarea rows="65" cols="120">@prefix rdfs:   	<http://www.w3.org/2000/01/rdf-schema/> .
 @prefix rdf:   		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#"> .
-@prefix stripts:   	<http://localhost:8080/Prototyp/StripTs/Ontology#> .
-@prefix lapis:   	<http://localhost:8080/Prototyp/Ontology/Lapis#> .
+@prefix stripts:   	<http://141.52.218.34:8080/Prototyp/StripTs/Ontology#> .
+@prefix lapis:   	<http://141.52.218.34:8080/Prototyp/Ontology/Lapis#> .
 @prefix xs:	 	<http://www.w3.org/2001/XMLSchema#> .
 
 	
-###  http://localhost:8080/Prototyp/StripTs/Ontology#hasInputBrainAtlasImage
+###  http://141.52.218.34:8080/Prototyp/StripTs/Ontology#hasInputBrainAtlasImage
 stripts:hasInputBrainAtlasImage
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Input Atlas Image for Stripping.";
@@ -18,7 +18,7 @@ stripts:hasInputBrainAtlasImage
 		rdfs:range 	lapis:image.
 		
 		
-###  http://localhost:8080/Prototyp/StripTs/Ontology#hasInputBrainAtlasMask
+###  http://141.52.218.34:8080/Prototyp/StripTs/Ontology#hasInputBrainAtlasMask
 stripts:hasInputBrainAtlasMask
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Input Atlas Mask for Stripping.";
@@ -26,7 +26,7 @@ stripts:hasInputBrainAtlasMask
 		rdfs:range 	lapis:image.
 		
 		
-###  http://localhost:8080/Prototyp/StripTs/Ontology#hasInputImage	
+###  http://141.52.218.34:8080/Prototyp/StripTs/Ontology#hasInputImage	
 stripts:hasInputImage
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Input Image to be stripped.";
@@ -34,7 +34,7 @@ stripts:hasInputImage
 		rdfs:range 	lapis:image.
 
 
-###  http://localhost:8080/Prototyp/StripTs/Ontology#hasOutputMaskPath		
+###  http://141.52.218.34:8080/Prototyp/StripTs/Ontology#hasOutputMaskPath		
 stripts:hasOutputMaskPath
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Output Path of stripped Mask.";
@@ -42,7 +42,7 @@ stripts:hasOutputMaskPath
 		rdfs:range 	lapis:directory.	
 
 
-###  http://localhost:8080/Prototyp/StripTs/Ontology#hasOutputImagePath		
+###  http://141.52.218.34:8080/Prototyp/StripTs/Ontology#hasOutputImagePath		
 stripts:hasOutputImagePath
 		rdf:type 	rdf:Property;
 		rdfs:comment 	"Output Path of stripped Image.";

@@ -5,7 +5,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class RDImportHandler extends DefaultHandler {
-	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/CalcServlet#"; 
+	private final String NAMESPACE_URI = "http://141.52.218.34:8080/Prototyp/CalcServlet#"; 
 	private boolean error=false;
 	private boolean hasFirstAddend = false;
 	private boolean hasSecondAddend = false;
