@@ -10,22 +10,46 @@
 	Current local time:
 	<%=new java.util.Date()%>
 	<br />
+	<h1 align="center">Prototyp</h1>
+	<br />
+	<div align="center">
+		<table>
+			<tr>
+				<th>Ontologies:</th>
+				<th>Pipeline:</th>
+			</tr>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td align="center"><a href="http://localhost:8080/Prototyp/Ontology/CTK">CTK</a></td>
+							<td align="center"><a href="http://localhost:8080/Prototyp/Ontology/Lapis">LAPIS</a></td>
+						</tr> 
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td align="center"><a href="http://localhost:8080/Prototyp/Mockup.jsp">Mockup</a></td>
+						</tr> 
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
 	<br />
 	<br />
-	<h3>Ontologies:</h3>
-	<ul>
-  		<li><a href="http://localhost:8080/Prototyp/Ontology/CTK">CTK</a></li>
-  		<li><a href="http://localhost:8080/Prototyp/Ontology/Lapis">LAPIS</a></li>
-	</ul>
-	
-	<br />
-	<h3>Linked Services / LAPIs:</h3>
-	<table border="2">
-		<tr>
-			<th>Available Services - Preprocessing</th>
+	<div align="center">
+	<div><b>Linked Services / LAPIs:</b><br/></div>
+	<table border="1">
+		<tr bgcolor="#FF0000">
+			<th colspan="3">Preprocessing</th>
+		</tr>
+		<tr>	
+			<th>Name</th>
 			<th>Transformation</th>
 			<th>Try Request via</th>
-		</tr>
+		</tr>	
 		<tr>
 			<td><a href="SFBServletCast#i">Cast-Service:</a></td>
 			<td/>
@@ -41,11 +65,14 @@
 			<td/>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/StripTs.jsp">JSP</a></td>
 		</tr>
-		<tr>
-			<th>Available Services - Description</th>
+		<tr bgcolor="#FF0000">
+			<th colspan="3">Description</th>
+		</tr>
+		<tr >	
+			<th>Name</th>
 			<th>Transformation</th>
 			<th>Try Request via</th>
-		</tr>
+		</tr>	
 		<tr>
 			<td><a href="SFBServletTranslator#i">Translator:</a></td>
 			<td align="center" valign="middle">XML&rarr;RDF</td>
@@ -56,16 +83,27 @@
 			<td align="center" valign="middle">RDF&rarr;SPARQL</td>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Describer.jsp">JSP</a></td>
 		</tr>
-		<tr>
-			<th>Available Services - Other</th>
+		<tr bgcolor="#FF0000">
+			<th colspan="3">Other</th>
+		</tr>
+		<tr>	
+			<th>Name</th>
 			<th>Transformation</th>
 			<th>Try Request via</th>
-		</tr>
+		</tr>	
 		<tr>
 			<td><a href="CalcServlet">Calculator:</a></td>
 			<td/>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Calculator.jsp">JSP</a></td>
 		</tr>
 	</table>
+	</div>
+	
+	
+	
+	
+	
+	
+	
 </body>
 </html>

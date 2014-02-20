@@ -1,6 +1,7 @@
 package kit.sfb.cognitive.apps.pipeline;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -11,7 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class Pipeline {
 
-	public static void main(String[] args) {
+	public static void startPipeline() {
 
 		// Use Case: needed: brain segmentation and normalization of a given t1
 		// scan.
@@ -32,8 +33,8 @@ public class Pipeline {
 
 		// Service URIs
 		String castURI = "http://localhost:8080/Prototyp/SFBServletCast#i";
-		String striptsURI = "http://localhost:8080/Prototyp/SFBServletStripTs";
-		String meanfreeURI = "http://localhost:8080/Prototyp/SFBServletMeanFree";
+		String striptsURI = "http://localhost:8080/Prototyp/SFBServletStripTs#i";
+		String meanfreeURI = "http://localhost:8080/Prototyp/SFBServletMeanFree#i";
 
 		// Requests
 
