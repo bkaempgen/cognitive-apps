@@ -74,4 +74,14 @@
     <servlet-name>MockupServlet</servlet-name>
     <url-pattern>/MockupServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SFBServletXSPARQL</display-name>
+    <servlet-name>SFBServletXSPARQL</servlet-name>
+    <servlet-class>kit.sfb.cognitive.apps.converter.SFBServletXSPARQL</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SFBServletXSPARQL</servlet-name>
+    <url-pattern>/SFBServletXSPARQL</url-pattern>
+  </servlet-mapping>
 </web-app>

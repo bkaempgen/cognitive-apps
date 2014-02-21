@@ -66,7 +66,20 @@
 			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/StripTs.jsp">JSP</a></td>
 		</tr>
 		<tr bgcolor="#FF0000">
-			<th colspan="3">Description</th>
+			<th colspan="3">Converter</th>
+		</tr>
+		<tr>	
+			<th>Name</th>
+			<th>Transformation</th>
+			<th>Try Request via</th>
+		</tr>	
+		<tr>
+			<td><a href="SFBServletXSPARQL#i">XSPARQL:</a></td>
+			<td align="center" >XML&harr;RDF</td>
+			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/Converter.jsp">JSP</a></td>
+		</tr>
+		<tr bgcolor="#FF0000">
+			<th colspan="3">CTK-Description</th>
 		</tr>
 		<tr >	
 			<th>Name</th>
@@ -74,12 +87,12 @@
 			<th>Try Request via</th>
 		</tr>	
 		<tr>
-			<td><a href="SFBServletTranslator#i">Translator:</a></td>
+			<td><a href="SFBServletTranslator#i">CTK-Translator:</a></td>
 			<td align="center" valign="middle">XML&rarr;RDF</td>
 			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/Translator.jsp">JSP</a></td>
 		</tr>
 		<tr>
-			<td><a href="SFBServletDescriber#i">Describer:</a></td>
+			<td><a href="SFBServletDescriber#i">CTK-Describer:</a></td>
 			<td align="center" valign="middle">RDF&rarr;SPARQL</td>
 			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/Describer.jsp">JSP</a></td>
 		</tr>

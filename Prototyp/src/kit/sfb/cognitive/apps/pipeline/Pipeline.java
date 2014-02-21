@@ -11,7 +11,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class Pipeline {
 
-
 	public static void startPipeline() {
 
 		// Use Case: needed: brain segmentation and normalization of a given t1
