@@ -64,5 +64,14 @@
     <servlet-name>SFBServletDescriber</servlet-name>
     <url-pattern>/SFBServletDescriber</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>MockupServlet</display-name>
+    <servlet-name>MockupServlet</servlet-name>
+    <servlet-class>kit.sfb.cognitive.apps.mockup.MockupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MockupServlet</servlet-name>
+    <url-pattern>/MockupServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
