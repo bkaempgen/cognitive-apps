@@ -1,7 +1,6 @@
 package kit.sfb.cognitive.apps.pipeline;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
