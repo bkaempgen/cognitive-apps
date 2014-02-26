@@ -68,7 +68,7 @@ for $person in doc("http://xsparql.deri.org/data/relations.xml")//person,
     $nameB in $person/knows
 construct
 {
-[ foaf:name $nameA; a foaf:Person ]
+[ foaf:name {data($nameA)}; a foaf:Person ]
 foaf:knows
 [ foaf:name $nameB; a foaf:Person ].
 }

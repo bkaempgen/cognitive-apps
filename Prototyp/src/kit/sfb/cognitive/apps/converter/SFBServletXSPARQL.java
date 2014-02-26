@@ -74,7 +74,6 @@ public class SFBServletXSPARQL extends HttpServlet {
 		String requeststringXSPARQL = null;
 		String requeststringXMLRDF = null;
 		String result = null;
-		int case_id;
 
 		try{
 			inputXSPARQL = new BufferedReader(new StringReader(request.getParameter("RequestXSPARQLInput")));
@@ -139,7 +138,7 @@ public class SFBServletXSPARQL extends HttpServlet {
 
 			 //Store in TMP-FIle
 			int random = (int)((Math.random()) * 9999 + 1);
-			String filename = "/data/SFB/xsparql/tmp" + random + ".tmp";
+			String filename = "C:/Users/phiL/Desktop/tmp" + random + ".tmp";
 			System.out.println("+++++++++++++++++++++++++++FILENAME++++++++++++++++++++++++++++++++++++");
 			System.out.println(filename);
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
