@@ -49,7 +49,7 @@ public class SFBServletXSPARQL extends HttpServlet {
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
 		writer.println("xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletDescriber#i\">");
+		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletXSPARQL#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Converter Service: XML to RDF / RDF to XML</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Converter Service: XML zu RDF / RDF zu XML</rdfs:label>");
