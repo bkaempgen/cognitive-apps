@@ -56,12 +56,18 @@ padding:10px;}
 	<br />
 	<br />
 	<div align="center">
-	<input type="submit" value="Show Example"
+	<input type="submit" value="Show Examples"
 		onclick="showDiv();this.style.visibility= 'hidden';" />
 	</div>
 	<div align="center" id="example" style="display: none;" class="answer_list">
-	<div align="center">Example:</div>
-		<textarea name="RequestInput" cols="100" rows="20">
+		<table align="center">
+			<tr>
+				<td align="center">Example 1:</td>
+				<td align="center">Example 2:</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea name="Example1" cols="100" rows="22">
 declare namespace foaf = "http://xmlns.com/foaf/0.1/";
 for $person in doc("http://xsparql.deri.org/data/relations.xml")//person,
     $nameA in $person/@name,
@@ -72,8 +78,34 @@ construct
 foaf:knows
 [ foaf:name $nameB; a foaf:Person ].
 }
+					</textarea>
+				</td>
+				<td>
+					<textarea name="Example2" cols="100" rows="22">
+declare namespace foaf = "http://xmlns.com/foaf/0.1/";
+let $baseURI := "http://www.example.org/"
+return
+
+	for $person in doc("http://xsparql.deri.org/data/relations.xml")//person
+	let $name := $person/@name
+	let $uriName := xsparql:createURI(fn:concat($baseURI, $name))
+	construct
+	{
+		$uriName a foaf:Person;
+		foaf:name {data($name)}.
 		
-		</textarea>
+		{	for $friend in $person/knows
+			let $uriFriend := xsparql:createURI(fn:concat($baseURI, $friend))
+			construct 
+			{ 
+			$uriName foaf:knows $uriFriend.
+			}
+		} 
+	}
+					</textarea>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<br />
 	<br />
