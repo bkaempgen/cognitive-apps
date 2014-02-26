@@ -1,13 +1,12 @@
 package kit.sfb.cognitive.apps.converter;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
@@ -22,8 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.deri.xsparql.evaluator.XSPARQLEvaluator;
-
-import com.google.common.io.CharStreams;
 
 /**
  * Servlet implementation class SFBServletXSPARQL
@@ -77,7 +74,6 @@ public class SFBServletXSPARQL extends HttpServlet {
 		String requeststringXSPARQL = null;
 		String requeststringXMLRDF = null;
 		String result = null;
-		int case_id;
 
 		try{
 			inputXSPARQL = new BufferedReader(new StringReader(request.getParameter("RequestXSPARQLInput")));
