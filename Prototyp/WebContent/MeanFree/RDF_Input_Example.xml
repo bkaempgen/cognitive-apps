@@ -5,8 +5,8 @@
   
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
     <rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
-	<meanfree:hasInputImage>C:/Users/phiL/Desktop/T1.nrrd</meanfree:hasInputImage>
+	<meanfree:hasInputImage>/data/SFB/Input-Images/T1.nrrd</meanfree:hasInputImage>
 	<meanfree:hasInputMaskImage>none</meanfree:hasInputMaskImage>
-	<meanfree:hasOutputImagePath>C:/Users/phiL/Desktop/meanfree_output_image.nrrd</meanfree:hasOutputImagePath>
+	<meanfree:hasOutputImagePath>/data/SFB/Output/meanfree_output_image.nrrd</meanfree:hasOutputImagePath>
 </rdf:Description>
 </rdf:RDF>

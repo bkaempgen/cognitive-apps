@@ -5,10 +5,10 @@
   
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
     <rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
-	<stripts:hasInputBrainAtlasImage>C:/Users/phiL/Desktop/atlasImage.mha</stripts:hasInputBrainAtlasImage>
-	<stripts:hasInputBrainAtlasMask>C:/Users/phiL/Desktop/atlasMask.mha</stripts:hasInputBrainAtlasMask>
-	<stripts:hasInputImage>C:/Users/phiL/Desktop/T1.nrrd</stripts:hasInputImage>
-	<stripts:hasOutputMaskPath>C:/Users/phiL/Desktop/stripts_output_mask.nrrd</stripts:hasOutputMaskPath>
-	<stripts:hasOutputImagePath>C:/Users/phiL/Desktop/stripts_output_image.nrrd</stripts:hasOutputImagePath>
+	<stripts:hasInputBrainAtlasImage>/data/SFB/Input-Images/atlasImage.mha</stripts:hasInputBrainAtlasImage>
+	<stripts:hasInputBrainAtlasMask>/data/SFB/Input-Images/atlasMask.mha</stripts:hasInputBrainAtlasMask>
+	<stripts:hasInputImage>/data/SFB/Input-Images/T1.nrrd</stripts:hasInputImage>
+	<stripts:hasOutputMaskPath>/data/SFB/Output/stripts_output_mask.nrrd</stripts:hasOutputMaskPath>
+	<stripts:hasOutputImagePath>/data/SFB/Output/stripts_output_image.nrrd</stripts:hasOutputImagePath>
 </rdf:Description>
 </rdf:RDF>

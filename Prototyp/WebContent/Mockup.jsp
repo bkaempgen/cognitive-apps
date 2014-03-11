@@ -63,18 +63,18 @@ textarea {
 	<div id="request1">
 		<table align ="center">
 			<tr>
-				<td><b>Request 1 - Post to <a href="http://localhost:8080/Prototyp/SFBServletCast#i">http://localhost:8080/Prototyp/SFBServletCast#i</a>:</b> Cast atlasImage.mha to atlasImage.nrrd</td>
+				<td><b>Request 1 - Post to <a href="http://141.52.218.34:8080/Prototyp/SFBServletCast#i">http://141.52.218.34:8080/Prototyp/SFBServletCast#i</a>:</b> Cast atlasImage.mha to atlasImage.nrrd</td>
 				<td><b>Response 1:</b></td>
 			</tr>
 			<tr>
 				<td>
 					<textarea name="RequestInput" cols="115" rows="12">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
+xmlns:cast="http://141.52.218.34:8080/Prototyp/Cast/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <cast:hasInputImage>https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasImage.mha</cast:hasInputImage>
 <cast:hasOutputImagePath>XNAT?project_id=TP&name=atlasImage.nrrd</cast:hasOutputImagePath>
 </rdf:Description>
@@ -84,11 +84,11 @@ xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
 				<td>
 					<textarea name="RequestInput" cols="115" rows="12">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
+xmlns:cast="http://141.52.218.34:8080/Prototyp/Cast/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <cast:hasInputImage>https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasImage.mha</cast:hasInputImage>
 <cast:hasOutputImagePath>XNAT?project_id=TP&name=atlasImage.nrrd</cast:hasOutputImagePath>
 <lapis:hasResult>https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasImage.nrrd</lapis:hasResult>
@@ -102,18 +102,18 @@ xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
 	<div id="request2">
 		<table align ="center">
 			<tr>
-				<td><b>Request 2 - Post to <a href="http://localhost:8080/Prototyp/SFBServletCast#i">http://localhost:8080/Prototyp/SFBServletCast#i</a>:</b> Cast atlasMask.mha to atlasMask.mha.nrrd</td>
+				<td><b>Request 2 - Post to <a href="http://141.52.218.34:8080/Prototyp/SFBServletCast#i">http://141.52.218.34:8080/Prototyp/SFBServletCast#i</a>:</b> Cast atlasMask.mha to atlasMask.mha.nrrd</td>
 				<td><b>Response 2:</b></td>
 			</tr>
 			<tr>
 				<td>
 					<textarea name="RequestInput" cols="115" rows="12">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
+xmlns:cast="http://141.52.218.34:8080/Prototyp/Cast/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_02_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <cast:hasInputImage>https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasMask.mha</cast:hasInputImage>
 <cast:hasOutputImagePath>XNAT?project_id=TP&name=atlasMask.nrrd</cast:hasOutputImagePath>
 </rdf:Description>
@@ -123,11 +123,11 @@ xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
 				<td>
 					<textarea name="RequestInput" cols="115" rows="12">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
+xmlns:cast="http://141.52.218.34:8080/Prototyp/Cast/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_02_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <cast:hasInputImage>https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasMask.mha</cast:hasInputImage>
 <cast:hasOutputImagePath>XNAT?project_id=TP&name=atlasMask.nrrd</cast:hasOutputImagePath>
 <lapis:hasResult>https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasMask.nrrd</lapis:hasResult>
@@ -141,18 +141,18 @@ xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#">
 	<div id="request3">
 		<table align ="center">
 			<tr>
-				<td><b>Request 3 - Post to <a href="http://localhost:8080/Prototyp/SFBServletStripTs#i">http://localhost:8080/Prototyp/SFBServletStripTs#i</a>:</b> Brain segmentation of T1.nrrd using atlasImage.nrrd, atlasMask.nrrd</td>
+				<td><b>Request 3 - Post to <a href="http://141.52.218.34:8080/Prototyp/SFBServletStripTs#i">http://141.52.218.34:8080/Prototyp/SFBServletStripTs#i</a>:</b> Brain segmentation of T1.nrrd using atlasImage.nrrd, atlasMask.nrrd</td>
 				<td><b>Response 3:</b></td>
 			</tr>
 			<tr>
 				<td>
 					<textarea name="RequestInput" cols="115" rows="22">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:stripts="http://localhost:8080/Prototyp/StripTs/Ontology#">
+xmlns:stripts="http://141.52.218.34:8080/Prototyp/StripTs/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_03_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <stripts:hasInputBrainAtlasImage>
 	https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasImage.nrrd
 </stripts:hasInputBrainAtlasImage>
@@ -171,11 +171,11 @@ xmlns:stripts="http://localhost:8080/Prototyp/StripTs/Ontology#">
 				<td>
 					<textarea name="RequestInput" cols="115" rows="22">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:stripts="http://localhost:8080/Prototyp/StripTs/Ontology#">
+xmlns:stripts="http://141.52.218.34:8080/Prototyp/StripTs/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_03_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <stripts:hasInputBrainAtlasImage>
 	https://xnat.sfb125.de/data/projects/TP/resources/2/files/atlasImage.nrrd
 </stripts:hasInputBrainAtlasImage>
@@ -199,18 +199,18 @@ xmlns:stripts="http://localhost:8080/Prototyp/StripTs/Ontology#">
 	<div id="request4">
 		<table align ="center">
 			<tr>
-				<td><b>Request 4 - Post to <a href="http://localhost:8080/Prototyp/SFBServletMeanFree#i">http://localhost:8080/Prototyp/SFBServletMeanFree#i</a>:</b> Normalization of tissue.</td>
+				<td><b>Request 4 - Post to <a href="http://141.52.218.34:8080/Prototyp/SFBServletMeanFree#i">http://141.52.218.34:8080/Prototyp/SFBServletMeanFree#i</a>:</b> Normalization of tissue.</td>
 				<td><b>Response 4:</b></td>
 			</tr>
 			<tr>
 				<td>
 					<textarea name="RequestInput" cols="115" rows="19">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:meanfree="http://localhost:8080/Prototyp/MeanFree/Ontology#">
+xmlns:meanfree="http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_04_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <meanfree:hasInputImage>
 	https://xnat.sfb125.de/data/projects/TP/resources/2/files/stripped_t1_image.nrrd
 </meanfree:hasInputImage>
@@ -225,11 +225,11 @@ xmlns:meanfree="http://localhost:8080/Prototyp/MeanFree/Ontology#">
 				<td>
 					<textarea name="RequestInput" cols="115" rows="19">
 <rdf:RDF 
-xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#" 
+xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#" 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:meanfree="http://localhost:8080/Prototyp/MeanFree/Ontology#">
+xmlns:meanfree="http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#">
 <rdf:Description rdf:about="http://www.example.com/Request_04_Example">
-<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 <meanfree:hasInputImage>
 	https://xnat.sfb125.de/data/projects/TP/resources/2/files/stripped_t1_image.nrrd
 </meanfree:hasInputImage>

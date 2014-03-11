@@ -13,7 +13,7 @@ public class Helper {
 	public static String RunCommandLineTool(String servicename,
 			List<String> parameters) throws IOException {
 
-		String mitkCommandLine = "C:/Users/phiL/Desktop/SFB-Files/MITK-2013.09.00-win64/MITK-2013.09.00-win64/bin/mitkBrainStrippingMiniApps.exe";
+		String mitkCommandLine = "sh /data/SFB/MITK/MITK-MBI-2013.12.99-linux64/mitkBrainStrippingMiniApps.sh";
 		String command = mitkCommandLine + " " + servicename;
 
 		// Build command from parameters
@@ -38,9 +38,9 @@ public class Helper {
 				System.out.println(line);
 
 				// Extract output path
-				if (line.contains("core.io.imgWriter: Writing image:")) {
+				if (line.contains("Writing image:")) {
 					Pattern myPattern = Pattern
-							.compile(".*(core.io.imgWriter: Writing image: )(.*)");
+							.compile(".*(Writing image: )(.*)");
 					Matcher m = myPattern.matcher(line);
 					if (m.matches()) {
 
