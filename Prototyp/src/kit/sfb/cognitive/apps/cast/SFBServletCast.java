@@ -1,10 +1,15 @@
 package kit.sfb.cognitive.apps.cast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.util.ArrayList;
+
+
+
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,6 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import kit.sfb.cognitive.apps.helper.Helper;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.output.*;
 import org.xml.sax.InputSource;
 
 import com.google.common.io.CharStreams;
@@ -31,6 +41,73 @@ public class SFBServletCast extends HttpServlet {
 	public SFBServletCast() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Multipart-File-Upload
+		boolean multipartFileUpload;
+		String filePath = "C:/Users/phiL/Desktop/";
+		int maxFileSize = 500 * 1024;
+		int maxMemSize = 4 * 1024;
+		File file;
+		
+		//filePath = getServletContext().getInitParameter("file-upload");
+		System.out.println(filePath);
+		
+		multipartFileUpload = ServletFileUpload.isMultipartContent(request);
+		System.out.println("Multi? : "+ multipartFileUpload);
+		if(multipartFileUpload){
+			
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+		    factory.setSizeThreshold(maxMemSize);
+		    factory.setRepository(new File("c:/temp"));
+		    
+		    ServletFileUpload upload = new ServletFileUpload(factory);
+		    upload.setSizeMax(maxFileSize);
+		    
+		    try{ 
+		        // Parse the request to get file items.
+		        List fileItems = upload.parseRequest(request);
+		  	
+		        // Process the uploaded file items
+		        Iterator i = fileItems.iterator();
+
+		        while ( i.hasNext () ) 
+		        {
+		           FileItem fi = (FileItem)i.next();
+		           if ( !fi.isFormField () )	
+		           {
+		              // Get the uploaded file parameters
+		              String fieldName = fi.getFieldName();
+		              System.out.println(fieldName);
+		              String fileName = fi.getName();
+		              System.out.println(fileName);
+		              String contentType = fi.getContentType();
+		              System.out.println(contentType);
+		              boolean isInMemory = fi.isInMemory();
+		              System.out.println(isInMemory);
+		              long sizeInBytes = fi.getSize();
+		              System.out.println(sizeInBytes);
+		              // Write the file
+		              if( fileName.lastIndexOf("\\") >= 0 ){
+		                 file = new File( filePath + 
+		                 fileName.substring( fileName.lastIndexOf("\\"))) ;
+		              }else{
+		                 file = new File( filePath + 
+		                 fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+		              }
+		              fi.write( file ) ;
+		              System.out.println("Uploaded Filename: " + fileName);
+		           }
+		        }
+		     }catch(Exception ex) {
+		         System.out.println(ex);
+		     }
+			
+			
+		}
+		
 	}
 
 	/**
@@ -71,58 +148,58 @@ public class SFBServletCast extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		BufferedReader input = null;
-
-		// Parse input according to request method
-		if (request.getParameter("RequestInput") != null) {
-			input = new BufferedReader(new StringReader(request.getParameter("RequestInput")));
-			System.out.println("+++++++JSP++++++++");
-			System.out.println(request.getParameter("RequestInput"));
-		}else{
-			input = new BufferedReader(new StringReader(CharStreams.toString(request.getReader())));
-			System.out.println("++++++Client++++++"); 
-			System.out.println(CharStreams.toString(request.getReader())); 
-		}
-
-
-		try {
-			RequestDataCast requestDataCast = importRequestDataCast(input);
-			String inputImage = requestDataCast.getInputImage();
-			String outputImagePath = requestDataCast.getOutputImagePath();
-
-			// New execution style with helper class
-			List<String> parameters = new ArrayList<String>();
-			parameters.add(inputImage);
-			parameters.add(outputImagePath);
-			String result = Helper.RunCommandLineTool("Cast", parameters);
-
-			// Response
-			response.setContentType("application/xml");
-
-			String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://localhost:8080/Prototyp/Cast/Ontology#\">"
-					+ "<rdf:Description rdf:about=\""
-					+ requestDataCast.getRequestURI()
-					+ "\">"
-					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
-					+ "<cast:hasInputImage>"
-					+ requestDataCast.getInputImage()
-					+ "</cast:hasInputImage>"
-					+ "<cast:hasOutputImagePath>"
-					+ requestDataCast.getOutputImagePath()
-					+ "</cast:hasOutputImagePath>"
-					+ "<lapis:hasResult>"
-					+ result
-					+ "</lapis:hasResult>" + "</rdf:Description></rdf:RDF>";
-
-			System.out.println(rdf);
-			response.getWriter().print(rdf);
-
-		} catch (Throwable t) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND, "corrupt input");
-		}
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//		BufferedReader input = null;
+//
+//		// Parse input according to request method
+//		if (request.getParameter("RequestInput") != null) {
+//			input = new BufferedReader(new StringReader(request.getParameter("RequestInput")));
+//			System.out.println("+++++++JSP++++++++");
+//			System.out.println(request.getParameter("RequestInput"));
+//		}else{
+//			input = new BufferedReader(new StringReader(CharStreams.toString(request.getReader())));
+//			System.out.println("++++++Client++++++"); 
+//			System.out.println(CharStreams.toString(request.getReader())); 
+//		}
+//
+//
+//		try {
+//			RequestDataCast requestDataCast = importRequestDataCast(input);
+//			String inputImage = requestDataCast.getInputImage();
+//			String outputImagePath = requestDataCast.getOutputImagePath();
+//
+//			// New execution style with helper class
+//			List<String> parameters = new ArrayList<String>();
+//			parameters.add(inputImage);
+//			parameters.add(outputImagePath);
+//			String result = Helper.RunCommandLineTool("Cast", parameters);
+//
+//			// Response
+//			response.setContentType("application/xml");
+//
+//			String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://localhost:8080/Prototyp/Cast/Ontology#\">"
+//					+ "<rdf:Description rdf:about=\""
+//					+ requestDataCast.getRequestURI()
+//					+ "\">"
+//					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+//					+ "<cast:hasInputImage>"
+//					+ requestDataCast.getInputImage()
+//					+ "</cast:hasInputImage>"
+//					+ "<cast:hasOutputImagePath>"
+//					+ requestDataCast.getOutputImagePath()
+//					+ "</cast:hasOutputImagePath>"
+//					+ "<lapis:hasResult>"
+//					+ result
+//					+ "</lapis:hasResult>" + "</rdf:Description></rdf:RDF>";
+//
+//			System.out.println(rdf);
+//			response.getWriter().print(rdf);
+//
+//		} catch (Throwable t) {
+//			response.sendError(HttpServletResponse.SC_NOT_FOUND, "corrupt input");
+//		}
+//	}
 
 	private RequestDataCast importRequestDataCast(BufferedReader reader) {
 		RDImportHandlerCast handler;
