@@ -24,7 +24,6 @@
     <servlet-name>SFBServletCast</servlet-name>
     <url-pattern>/SFBServletCast</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>SFBServletStripTs</display-name>
@@ -84,5 +83,15 @@
   <servlet-mapping>
     <servlet-name>SFBServletXSPARQL</servlet-name>
     <url-pattern>/SFBServletXSPARQL</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SFBServletCastNeu</display-name>
+    <servlet-name>SFBServletCastNeu</servlet-name>
+    <servlet-class>kit.sfb.cognitive.apps.cast.neu.SFBServletCastNeu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SFBServletCastNeu</servlet-name>
+    <url-pattern>/SFBServletCastNeu</url-pattern>
   </servlet-mapping>
 </web-app>
