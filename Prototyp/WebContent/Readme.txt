@@ -6,3 +6,6 @@ mitkBrainStrippingMiniApps.exe BatchedFolderRegistration -o C:/Users/phiL/Deskto
 
 Curl-Beispiel-Aufruf:
 curl -X POST -d "@C:/Users/phiL/Desktop/request.xml" http://localhost:8080/Prototyp/SFBServletCast#i --header "Content-Type: application/rdf+xml"
+
+
+curl -X POST -d "@C:/Users/phiL/Desktop/request.xml" -H "Content-Type: application/xml+rdf" -H "Accept: application/xml+rdf" -v http://localhost:8080/Prototyp/SFBServletCast#i
