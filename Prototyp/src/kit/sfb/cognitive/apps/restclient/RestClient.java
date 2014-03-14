@@ -24,7 +24,7 @@ public class RestClient {
 		HttpClient httpclient = clientbuilder.build();
 
 
-		HttpGet httpGet = new HttpGet("http://aifb-ls3-vm2.aifb.kit.edu:8080/xnatwrapper/id/project/TP");
+		HttpGet httpGet = new HttpGet("http://aifb-ls3-vm2.aifb.kit.edu:8080/xnatwrapper/data/project/TP");
 		httpGet.setHeader("Accept" , "application/rdf+xml");
 		
 

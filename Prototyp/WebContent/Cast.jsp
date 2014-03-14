@@ -7,7 +7,7 @@
 <title>Cast</title>
 </head>
 <body>
-	<form action="SFBServletCast#i" method="POST">
+	<form action="SFBServletCastNeu#i" method="POST">
 		<p>Request:</p>
 		<div>
 			<textarea name="RequestInput" cols="80" rows="4"></textarea>

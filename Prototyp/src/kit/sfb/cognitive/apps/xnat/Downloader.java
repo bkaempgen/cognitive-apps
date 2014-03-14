@@ -1,9 +1,14 @@
 package kit.sfb.cognitive.apps.xnat;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
@@ -13,8 +18,10 @@ import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
+import java.util.Scanner;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
@@ -33,10 +40,13 @@ import org.apache.http.protocol.HTTP;
 
 public class Downloader {
 
-	//HACK wegen SSL
-	//Source: http://stackoverflow.com/questions/2642777/trusting-all-certificates-using-httpclient-over-https
+	private OutputStream outputstream;
+
+	// HACK wegen SSL
+	// Source:
+	// http://stackoverflow.com/questions/2642777/trusting-all-certificates-using-httpclient-over-https
 	private static DefaultHttpClient getNewHttpClient() {
-		
+
 		try {
 			KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
 			trustStore.load(null, null);
@@ -60,8 +70,8 @@ public class Downloader {
 		}
 	}
 
-	//Download File from Xnat
-	public static File downloadFile(URI uri) throws IOException {
+	// Download File from Xnat
+	public static void downloadFile(URI uri, String pathOnDisc) throws IOException {
 
 		DefaultHttpClient client = getNewHttpClient();
 		HttpGet get = new HttpGet(uri);
@@ -71,27 +81,51 @@ public class Downloader {
 		byte[] encodedBytes = Base64.encodeBase64(Files.readAllBytes(Paths.get("C:/Users/phiL/Desktop/xnat_auth.txt")));
 		String encoding = new String(encodedBytes);
 
+		InputStream inputstream = null;
+		OutputStream outputstream = null;
 		try {
 
 			System.out.println("request " + get.getRequestLine());
 			get.setHeader("Authorization", "Basic " + encoding);
 			HttpResponse response = client.execute(get);
 
+			System.out.println("xxxxxxxxxxxxxxxx Status xxxxxxxxxxxxxxxx");
 			System.out.println(response.getStatusLine());
 
-			BufferedReader r = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			StringBuilder total = new StringBuilder();
-			String line = null;
-			while ((line = r.readLine()) != null) {
-				total.append(line + '\n');
+			File file = new File(pathOnDisc);
+
+			inputstream = response.getEntity().getContent();
+			outputstream = new FileOutputStream(file);
+
+			int read = 0;
+			byte[] bytes = new byte[1024];
+
+			while ((read = inputstream.read(bytes)) != -1) {
+				outputstream.write(bytes, 0, read);
 			}
-			System.out.println(total.toString());
+
+			System.out.println("Done!");
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			if (inputstream != null) {
+				try {
+					inputstream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (outputstream != null) {
+				try {
+					// outputStream.flush();
+					outputstream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			}
+
 		}
-
-		return new File("test");
 	}
-
 }

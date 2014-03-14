@@ -70,9 +70,24 @@ lapis:Request
 ###  http://localhost:8080/Prototyp/Ontology/Lapis#hasResult		
 lapis:hasResult
 		rdf:type	rdf:Property;
-		rdfs:comment	"Result.";
+		rdfs:comment	"Result of Request.";
 		rdfs:domain	lapis:Request;
 		rdfs:range	xsd:string.		
+		
+###  http://localhost:8080/Prototyp/Ontology/Lapis#hasDownload		
+lapis:hasResult
+		rdf:type	rdf:Property;
+		rdfs:comment	"Download URI of Result.";
+		rdfs:domain	lapis:Request;
+		rdfs:range	xsd:string.		
+		
+###  http://localhost:8080/Prototyp/Ontology/Lapis#salt	
+lapis:salt
+		rdf:type	rdf:Property;
+		rdfs:comment	"Random string used as identifier for your request and you result file";
+		rdfs:domain	lapis:Request;
+		rdfs:range	xsd:string.		
+		
 	
 ##############################
 ##Parameter-Type / Class######

@@ -14,17 +14,9 @@
 ###  http://localhost:8080/Prototyp/Cast/Ontology#hasInputImage	
 cast:hasInputImage
 		rdf:type 	rdf:Property;
-		rdfs:comment 	"Input Image to be casted.";
+		rdfs:comment 	"Input Image to be casted. Possible Values: URI of online resource (any free or XNAT) OR name of parameter of multipart post with image as content.";
 		rdfs:domain 	lapis:Request;
 		rdfs:range 	lapis:image.
-
-
-###  http://localhost:8080/Prototyp/Cast/Ontology#hasOutputImagePath		
-cast:hasOutputImagePath
-		rdf:type 	rdf:Property;
-		rdfs:comment 	"Output Path of casted Image.";
-		rdfs:domain 	lapis:Request;
-		rdfs:range 	lapis:directory.	
 
 
 </textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/>Example:<a href="RDF_Input_Example.xml">RDF In</a> and <a href="RDF_Output_Example.xml">RDF Out</a></td></tr></table></body>
