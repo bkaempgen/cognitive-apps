@@ -28,9 +28,9 @@ public class SFBServletCastNeu extends HttpServlet {
 		BufferedReader input = null;
 		RequestDataCastNeu requestDataCast = null;
 
-		String inputImage = null;
 		String salt = null;
 		String requestURI = null;
+		String inputImage = null;
 
 		long unixTimestamp = System.currentTimeMillis() / 1000L;
 		int random = (int) ((Math.random()) * 999999999 + 1);
@@ -58,14 +58,15 @@ public class SFBServletCastNeu extends HttpServlet {
 
 				requestDataCast = importRequestDataCast(input);
 
+				salt = requestDataCast.getSalt();
+				System.out.println("salt: " + salt);
+				
+				requestURI = requestDataCast.getRequestURI();
+				System.out.println("requestURI " + requestURI);
+				
 				inputImage = requestDataCast.getInputImage();
 				System.out.println("inputImage: " + inputImage);
 
-				salt = requestDataCast.getSalt();
-				System.out.println("salt: " + salt);
-
-				requestURI = requestDataCast.getRequestURI();
-				System.out.println("requestURI " + requestURI);
 
 			} catch (Throwable t) {
 				response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input!");
@@ -85,6 +86,7 @@ public class SFBServletCastNeu extends HttpServlet {
 
 				} catch (Throwable t) {
 					response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input!");
+					throw new Exception();
 				}
 
 				try {
@@ -97,7 +99,6 @@ public class SFBServletCastNeu extends HttpServlet {
 					parameters.add(resultImagePathOnDisc);
 
 					result = Helper.RunCommandLineTool("Cast", parameters);
-					Helper.deleteFileFromDisc(inputImagePathOnDisc);
 					downloadLink = Helper.moveFileToDownloadFolder(resultImagePathOnDisc, "Cast");
 
 					// Response
@@ -131,6 +132,8 @@ public class SFBServletCastNeu extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			Helper.deleteFileFromDisc(inputImagePathOnDisc);
 		}
 	}
 

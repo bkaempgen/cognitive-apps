@@ -94,4 +94,24 @@
     <servlet-name>SFBServletCastNeu</servlet-name>
     <url-pattern>/SFBServletCastNeu</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>SFBServletStripTsNeu</display-name>
+    <servlet-name>SFBServletStripTsNeu</servlet-name>
+    <servlet-class>kit.sfb.cognitive.apps.stripts.neu.SFBServletStripTsNeu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SFBServletStripTsNeu</servlet-name>
+    <url-pattern>/SFBServletStripTsNeu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SFBServletMeanFreeNeu</display-name>
+    <servlet-name>SFBServletMeanFreeNeu</servlet-name>
+    <servlet-class>kit.sfb.cognitive.apps.meanfree.neu.SFBServletMeanFreeNeu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SFBServletMeanFreeNeu</servlet-name>
+    <url-pattern>/SFBServletMeanFreeNeu</url-pattern>
+  </servlet-mapping>
 </web-app>

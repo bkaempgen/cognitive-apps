@@ -7,7 +7,7 @@
 <title>StripTs</title>
 </head>
 <body>
-	<form action="SFBServletStripTs" method="POST">
+	<form action="SFBServletStripTsNeu#i" method="POST">
 		<p>Request:</p>
 		<div>
 			<textarea name="RequestInput" cols="80" rows="4"></textarea>
