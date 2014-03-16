@@ -4,14 +4,13 @@ public class RequestDataMeanFree {
 
 	private String inputImage;
 	private String inputMaskImage;
-	private String outputImagePath;
+	private String salt;
 	private String uriRequest;
 
-	public RequestDataMeanFree(String inputImage, String inputMaskImage,
-			String outputImagePath, String uriRequest) {
+	public RequestDataMeanFree(String inputImage, String inputMaskImage, String salt, String uriRequest) {
 		this.inputImage = inputImage;
 		this.inputMaskImage = inputMaskImage;
-		this.outputImagePath = outputImagePath;
+		this.salt = salt;
 		this.uriRequest = uriRequest;
 
 	}
@@ -24,8 +23,8 @@ public class RequestDataMeanFree {
 		return inputMaskImage;
 	}
 
-	public String getOutputImagePath() {
-		return outputImagePath;
+	public String getSalt() {
+		return salt;
 	}
 
 	public String getRequestURI() {

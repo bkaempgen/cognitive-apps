@@ -51,12 +51,12 @@
 			<th>Try Request via</th>
 		</tr>	
 		<tr>
-			<td><a href="SFBServletCast#i">Cast-Service:</a></td>
+			<td><a href="SFBServletCast#i">Cast:</a></td>
 			<td/>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Cast.jsp">JSP</a></td>
 		</tr>
 		<tr>
-			<td><a href="SFBServletMeanFree#i">MeanFree-Service:</a></td>
+			<td><a href="SFBServletMeanFree#i">MeanFree:</a></td>
 			<td/>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/MeanFree.jsp">JSP</a></td>
 		</tr>
@@ -95,19 +95,6 @@
 			<td><a href="SFBServletDescriber#i">CTK-Describer:</a></td>
 			<td align="center" valign="middle">RDF&rarr;SPARQL</td>
 			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Describer.jsp">JSP</a></td>
-		</tr>
-		<tr bgcolor="#FF0000">
-			<th colspan="3">Other</th>
-		</tr>
-		<tr>	
-			<th>Name</th>
-			<th>Transformation</th>
-			<th>Try Request via</th>
-		</tr>	
-		<tr>
-			<td><a href="CalcServlet">Calculator:</a></td>
-			<td/>
-			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Calculator.jsp">JSP</a></td>
 		</tr>
 	</table>
 	</div>

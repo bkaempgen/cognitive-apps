@@ -3,7 +3,6 @@ package kit.sfb.cognitive.apps.meanfree;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,27 +15,11 @@ import kit.sfb.cognitive.apps.helper.Helper;
 
 import org.xml.sax.InputSource;
 
-import com.google.common.io.CharStreams;
 import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 
-/**
- * Servlet implementation class SFBServletMeanFree
- */
 public class SFBServletMeanFree extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public SFBServletMeanFree() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/xml");
@@ -59,8 +42,10 @@ public class SFBServletMeanFree extends HttpServlet {
 		writer.println("<lapis:hasServiceDescription>http://localhost:8080/Prototyp/MeanFree/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>T1 input image of patient and mask image (optional).</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Normalized t1 image regarding tissue colour.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/MeanFree/RDF_Input_Example.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/MeanFree/RDF_Output_Example.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/MeanFree/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/MeanFree/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/MeanFree/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/MeanFree/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -74,54 +59,130 @@ public class SFBServletMeanFree extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		BufferedReader input = null;
+		RequestDataMeanFree requestDataMeanFree = null;
 
-		// Parse input according to request method
-		if (request.getParameter("RequestInput") != null) {
-			input = new BufferedReader(new StringReader(request.getParameter("RequestInput")));
-			System.out.println("+++++++JSP++++++++");
-			System.out.println(request.getParameter("RequestInput"));
-		} else {
-			input = new BufferedReader(new StringReader(CharStreams.toString(request.getReader())));
-			System.out.println("++++++Client++++++");
-			System.out.println(CharStreams.toString(request.getReader()));
-		}
+		String salt = null;
+		String requestURI = null;
+		String inputImage = null;
+		String inputMaskImage = null;
+
+		long unixTimestamp = System.currentTimeMillis() / 1000L;
+		int random = (int) ((Math.random()) * 999999999 + 1);
+
+		String inputImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputMaskImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
+
+		String resultPathOnDisc = "C:/Users/phiL/Desktop/tmp/";
+
+		String result = null;
+		String downloadLink = null;
 
 		try {
-			RequestDataMeanFree requestDataMeanFree = importRequestDataMeanFree(input);
-			String inputImage = requestDataMeanFree.getInputImage();
-			String inputMaskImage = requestDataMeanFree.getInputMaskImage();
-			String outputImagePath = requestDataMeanFree.getOutputImagePath();
 
-			// New execution style with helper class
-			List<String> parameters = new ArrayList<String>();
-			parameters.add(inputImage);
-			parameters.add(inputMaskImage);
-			parameters.add(outputImagePath);
-			String result = Helper.RunCommandLineTool("MeanFree", parameters);
+			try {
 
-			// Response
-			response.setContentType("application/xml");
+				input = Helper.getRDFInformation(request);
 
-			String rdf ="<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://localhost:8080/Prototyp/MeanFree/Ontology#\">"
-					+ "<rdf:Description rdf:about=\""
-					+ requestDataMeanFree.getRequestURI()
-					+ "\">"
-					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
-					+ "<meanfree:hasInputImage>"
-					+ requestDataMeanFree.getInputImage()
-					+ "</meanfree:hasInputImage>"
-					+ "<meanfree:hasInputMaskImage>"
-					+ requestDataMeanFree.getInputMaskImage()
-					+ "</meanfree:hasInputMaskImage>"
-					+ "<meanfree:hasOutputImagePath>"
-					+ requestDataMeanFree.getOutputImagePath()
-					+ "</meanfree:hasOutputImagePath>" + "<lapis:hasResult>" + result + "</lapis:hasResult>" + "</rdf:Description></rdf:RDF>";
+				System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxx RDF Information xxxxxxxxxxxxxxxxxxxxxxxxx");
+				requestDataMeanFree = importRequestDataMeanFree(input);
 
-			System.out.println(rdf);
-			response.getWriter().print(rdf);
+				salt = requestDataMeanFree.getSalt();
+				System.out.println("salt: " + salt);
 
-		} catch (Throwable t) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND, "corrupt input");
+				requestURI = requestDataMeanFree.getRequestURI();
+				System.out.println("requestURI " + requestURI);
+
+				inputImage = requestDataMeanFree.getInputImage();
+				System.out.println("inputImage: " + inputImage);
+
+				inputMaskImage = requestDataMeanFree.getInputMaskImage();
+				System.out.println("inputMaskImage: " + inputMaskImage);
+				
+
+			} catch (Throwable t) {
+				response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input!");
+			}
+
+			if (!Helper.saltIsValid("MeanFree", salt)) {
+
+				response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input - salt already used recently!");
+
+			} else {
+
+				try {
+
+					inputImagePathOnDisc = Helper.getFileFromPostRequest(inputImage, inputImagePathOnDisc, request);
+					System.out.println(inputImagePathOnDisc);
+
+					if (inputMaskImage.equalsIgnoreCase("none")){
+						inputMaskImagePathOnDisc = "none";
+					}else{
+						inputMaskImagePathOnDisc = Helper.getFileFromPostRequest(inputMaskImage, inputMaskImagePathOnDisc, request);
+						System.out.println(inputMaskImagePathOnDisc);
+					}
+
+				} catch (Throwable t) {
+					response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input!");
+					throw new Exception();
+				}
+
+				try {
+
+					resultPathOnDisc += salt + "_result" + ".nrrd";
+
+					List<String> parameters = new ArrayList<String>();
+					parameters.add(inputImagePathOnDisc);
+					parameters.add(inputMaskImagePathOnDisc);
+					parameters.add(resultPathOnDisc);
+
+					result = Helper.RunCommandLineTool("MeanFree", parameters);
+					
+					boolean hasDownload = true;
+					if(result.equalsIgnoreCase("Failure! Please check quality of request data!")) hasDownload = false;
+					
+					downloadLink = Helper.moveFileToDownloadFolder(resultPathOnDisc, "MeanFree");
+
+					response.setContentType("application/xml");
+
+					String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://localhost:8080/Prototyp/MeanFree/Ontology#\">"
+							+ "<rdf:Description rdf:about=\""
+							+ requestDataMeanFree.getRequestURI()
+							+ "\">"
+							+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+							+ "<lapis:salt>"
+							+ requestDataMeanFree.getSalt()
+							+ "</lapis:salt>"
+							+ "<meanfree:hasInputImage>"
+							+ requestDataMeanFree.getInputImage()
+							+ "</meanfree:hasInputImage>"
+							+ "<meanfree:hasInputMaskImage>"
+							+ requestDataMeanFree.getInputMaskImage()
+							+ "</meanfree:hasInputMaskImage>"
+							+ "<lapis:hasResult>"
+							+ result
+							+ "</lapis:hasResult>";
+					
+					if(hasDownload){
+						rdf +="<lapis:hasDownload>"+ downloadLink + "</lapis:hasDownload>";
+					}
+							
+						rdf +="</rdf:Description></rdf:RDF>";
+
+					System.out.println(rdf);
+					response.getWriter().print(rdf);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			Helper.deleteFileFromDisc(inputImagePathOnDisc);
+			Helper.deleteFileFromDisc(inputMaskImagePathOnDisc);
 		}
 	}
 
@@ -134,14 +195,12 @@ public class SFBServletMeanFree extends HttpServlet {
 			parser.setContentHandler(handler);
 			parser.parse(new InputSource(reader));
 			// new ByteArrayInputStream(data.getBytes())));
-			if (handler.getError() || handler.getInputImage() == null || handler.getInputMaskImage() == null
-					|| handler.getOutputImagePath() == null)
+			if (handler.getError() || handler.getInputImage() == null || handler.getInputMaskImage() == null || handler.getSalt() == null)
 				return null;
 		} catch (Throwable t) {
 			return null;
 		}
-		return new RequestDataMeanFree(handler.getInputImage(), handler.getInputMaskImage(), handler.getOutputImagePath(),
-				handler.getRequestURI());
+		return new RequestDataMeanFree(handler.getInputImage(), handler.getInputMaskImage(), handler.getSalt(), handler.getRequestURI());
 	}
 
 }

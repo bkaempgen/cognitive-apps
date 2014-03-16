@@ -84,7 +84,7 @@ lapis:hasResult
 ###  http://localhost:8080/Prototyp/Ontology/Lapis#salt	
 lapis:salt
 		rdf:type	rdf:Property;
-		rdfs:comment	"Random string used as identifier for your request and you result file";
+		rdfs:comment	"Random string used as identifier for your request and your result file.";
 		rdfs:domain	lapis:Request;
 		rdfs:range	xsd:string.		
 		

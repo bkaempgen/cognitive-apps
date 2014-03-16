@@ -13,31 +13,29 @@ PREFIX stripts: <http://localhost:8080/Prototyp/StripTs/Ontology#>.
 
 <tr><td>Input: </td><td><textarea rows="15" cols="80">
 ?request		rdf:type			lapis:Request.
+?request		lapis:salt			?salt.
 ?request		stripts:hasInputBrainAtlasImage	?BrainAtlasImage.
 ?request		stripts:hasInputBrainAtlasMask	?BrainAtlasMask.
 ?request		stripts:hasInputImage		?InputImage.
-?request		stripts:hasOutputMaskPath	?OutputMaskPath.
-?request		stripts:hasOutputImagePath	?OutputImagePath.
+?salt			rdf:type			xs:string.
 ?BrainAtlasImage 	rdf:type			lapis:image.
 ?BrainAtlasMask 	rdf:type			lapis:image.
 ?InputImage		rdf:type			lapis:image.
-?OutputMaskPath 	rdf:type			lapis:directory.
-?OutputImagePath	rdf:type			lapis:directory.
 </textarea></td></tr>
 <tr><td>Output: </td>
 <td><textarea rows="15" cols="80">
 ?request		rdf:type			lapis:Request.
+?request		lapis:salt			?salt.
 ?request		stripts:hasInputBrainAtlasImage	?BrainAtlasImage.
 ?request		stripts:hasInputBrainAtlasMask	?BrainAtlasMask.
 ?request		stripts:hasInputImage		?InputImage.
-?request		stripts:hasOutputMaskPath	?OutputMaskPath.
-?request		stripts:hasOutputImagePath	?OutputImagePath.
+?salt			rdf:type			xs:string.
 ?BrainAtlasImage 	rdf:type			lapis:image.
 ?BrainAtlasMask 	rdf:type			lapis:image.
 ?InputImage		rdf:type			lapis:image.
-?OutputMaskPath 	rdf:type			lapis:directory.
-?OutputImagePath	rdf:type			lapis:directory.
 
 ?request 		lapis:hasResult			xs:string.
+?request		lapis:hasDownload		xs:string.
+?request		lapis:hasDownload		xs:string.
 </textarea></td></tr></table>
 </body></html>

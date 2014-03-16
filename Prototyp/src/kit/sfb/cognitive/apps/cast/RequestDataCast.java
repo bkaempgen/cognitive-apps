@@ -3,12 +3,12 @@ package kit.sfb.cognitive.apps.cast;
 public class RequestDataCast {
 
 	private String inputImage;
-	private String outputImagePath;
+	private String salt;
 	private String uriRequest;
 
-	public RequestDataCast(String inputImage, String outputImagePath, String uriRequest) {
+	public RequestDataCast(String inputImage, String salt, String uriRequest) {
 		this.inputImage = inputImage;
-		this.outputImagePath = outputImagePath;
+		this.salt = salt;
 		this.uriRequest = uriRequest;
 
 	}
@@ -17,15 +17,12 @@ public class RequestDataCast {
 		return inputImage;
 	}
 
-	public String getOutputImagePath() {
-		return outputImagePath;
+	public String getSalt() {
+		return salt;
 	}
 
 	public String getRequestURI() {
 		return uriRequest;
 	}
 
-	
-	
-	
 }

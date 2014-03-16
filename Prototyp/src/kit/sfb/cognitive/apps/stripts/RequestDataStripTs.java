@@ -5,16 +5,14 @@ public class RequestDataStripTs {
 	private String inputBrainAtlasImage;
 	private String inputBrainAtlasMask;
 	private String inputImage;
-	private String outputMaskPath;
-	private String outputImagePath;
+	private String salt;
 	private String uriRequest;
 
-	public RequestDataStripTs(String inputBrainAtlasImage, String inputBrainAtlasMask, String inputImage, String outputMaskPath, String outputImagePath, String uriRequest) {
+	public RequestDataStripTs(String inputBrainAtlasImage, String inputBrainAtlasMask, String inputImage, String salt, String uriRequest) {
 		this.inputBrainAtlasImage = inputBrainAtlasImage;
 		this.inputBrainAtlasMask = inputBrainAtlasMask;
 		this.inputImage = inputImage;
-		this.outputMaskPath = outputMaskPath;
-		this.outputImagePath = outputImagePath;
+		this.salt = salt;
 		this.uriRequest = uriRequest;
 
 	}
@@ -22,28 +20,21 @@ public class RequestDataStripTs {
 	public String getInputBrainAtlasImage() {
 		return inputBrainAtlasImage;
 	}
-	
+
 	public String getInputBrainAtlasMask() {
 		return inputBrainAtlasMask;
 	}
-		
+
 	public String getInputImage() {
 		return inputImage;
 	}
-	
-	public String getOutputMaskPath() {
-		return outputMaskPath;
-	}
-	
-	public String getOutputImagePath() {
-		return outputImagePath;
+
+	public String getSalt() {
+		return salt;
 	}
 
 	public String getRequestURI() {
 		return uriRequest;
 	}
 
-	
-	
-	
 }

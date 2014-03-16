@@ -13,7 +13,7 @@
 ###  http://localhost:8080/Prototyp/StripTs/Ontology#hasInputBrainAtlasImage
 stripts:hasInputBrainAtlasImage
 		rdf:type 	rdf:Property;
-		rdfs:comment 	"Input Atlas Image for Stripping.";
+		rdfs:comment 	"Input Atlas Image for Stripping. Possible Values: URI of online resource (any free or XNAT) OR name of parameter of multipart post with image as content.";
 		rdfs:domain 	lapis:Request;
 		rdfs:range 	lapis:image.
 		
@@ -21,7 +21,7 @@ stripts:hasInputBrainAtlasImage
 ###  http://localhost:8080/Prototyp/StripTs/Ontology#hasInputBrainAtlasMask
 stripts:hasInputBrainAtlasMask
 		rdf:type 	rdf:Property;
-		rdfs:comment 	"Input Atlas Mask for Stripping.";
+		rdfs:comment 	"Input Atlas Mask for Stripping. Possible Values: URI of online resource (any free or XNAT) OR name of parameter of multipart post with image as content.";
 		rdfs:domain 	lapis:Request;
 		rdfs:range 	lapis:image.
 		
@@ -29,25 +29,11 @@ stripts:hasInputBrainAtlasMask
 ###  http://localhost:8080/Prototyp/StripTs/Ontology#hasInputImage	
 stripts:hasInputImage
 		rdf:type 	rdf:Property;
-		rdfs:comment 	"Input Image to be stripped.";
+		rdfs:comment 	"Input Image to be stripped. Possible Values: URI of online resource (any free or XNAT) OR name of parameter of multipart post with image as content.";
 		rdfs:domain 	lapis:Request;
 		rdfs:range 	lapis:image.
 
 
-###  http://localhost:8080/Prototyp/StripTs/Ontology#hasOutputMaskPath		
-stripts:hasOutputMaskPath
-		rdf:type 	rdf:Property;
-		rdfs:comment 	"Output Path of stripped Mask.";
-		rdfs:domain 	lapis:Request;
-		rdfs:range 	lapis:directory.	
-
-
-###  http://localhost:8080/Prototyp/StripTs/Ontology#hasOutputImagePath		
-stripts:hasOutputImagePath
-		rdf:type 	rdf:Property;
-		rdfs:comment 	"Output Path of stripped Image.";
-		rdfs:domain 	lapis:Request;
-		rdfs:range 	lapis:directory.	
 
 </textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/>Example:<a href="RDF_Input_Example.xml">RDF In</a> and <a href="RDF_Output_Example.xml">RDF Out</a></td></tr></table></body>
 </html>

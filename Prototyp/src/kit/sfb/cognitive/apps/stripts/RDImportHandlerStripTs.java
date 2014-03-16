@@ -6,20 +6,19 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class RDImportHandlerStripTs extends DefaultHandler {
 	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/StripTs/Ontology#"; 
+	private final String NAMESPACE_URI_LAPIS = "http://localhost:8080/Prototyp/Ontology/Lapis#";
 	private boolean error=false;
 	private boolean hasInputBrainAtlasImage = false;
 	private boolean hasInputBrainAtlasMask = false;
 	private boolean hasInputImage = false;
-	private boolean hasOutputMaskPath = false;
-	private boolean hasOutputImagePath = false;
+	private boolean hasSalt = false;
 	
 
 
 	private String inputBrainAtlasImage = null;
 	private String inputBrainAtlasMask = null;
 	private String inputImage = null;
-	private String outputMaskPath = null;
-	private String outputImagePath = null;
+	private String salt = null;
 
 	
 	private String uriRequest ="";
@@ -29,11 +28,10 @@ public class RDImportHandlerStripTs extends DefaultHandler {
 		if (localName.equalsIgnoreCase("hasInputBrainAtlasImage") && namespaceURI.equals(NAMESPACE_URI)) hasInputBrainAtlasImage = true;
 		if (localName.equalsIgnoreCase("hasInputBrainAtlasMask") && namespaceURI.equals(NAMESPACE_URI)) hasInputBrainAtlasMask = true;
 		if (localName.equalsIgnoreCase("hasInputImage") && namespaceURI.equals(NAMESPACE_URI)) hasInputImage = true;
-		if (localName.equalsIgnoreCase("hasOutputMaskPath") && namespaceURI.equals(NAMESPACE_URI)) hasOutputMaskPath = true;
-		if (localName.equalsIgnoreCase("hasOutputImagePath") && namespaceURI.equals(NAMESPACE_URI)) hasOutputImagePath = true;
+		if (localName.equalsIgnoreCase("salt") && namespaceURI.equals(NAMESPACE_URI_LAPIS)) hasSalt = true;
 
 		
-		if(localName.equalsIgnoreCase("description") && !hasInputBrainAtlasImage && !hasInputBrainAtlasMask && !hasInputImage && !hasOutputMaskPath && !hasOutputImagePath){
+		if(localName.equalsIgnoreCase("description") && !hasInputBrainAtlasImage && !hasInputBrainAtlasMask && !hasInputImage && !hasSalt){
 			//attribute req uri
 			uriRequest = atts.getValue("rdf:about");
 		}
@@ -44,8 +42,7 @@ public class RDImportHandlerStripTs extends DefaultHandler {
 		if (localName.equalsIgnoreCase("hasInputBrainAtlasImage")) hasInputBrainAtlasImage = false;
 		if (localName.equalsIgnoreCase("hasInputBrainAtlasMask")) hasInputBrainAtlasMask = false;
 		if (localName.equalsIgnoreCase("hasInputImage")) hasInputImage = false;
-		if (localName.equalsIgnoreCase("hasOutputMaskPath")) hasOutputMaskPath = false;
-		if (localName.equalsIgnoreCase("hasOutputImagePath")) hasOutputImagePath = false;
+		if (localName.equalsIgnoreCase("salt")) hasSalt = false;
 	}
 
 	public void characters(char[] ch, int start, int length) throws SAXException {
@@ -58,19 +55,16 @@ public class RDImportHandlerStripTs extends DefaultHandler {
 		if(hasInputImage)
 			inputImage = new String(ch,start,length);
 		
-		if(hasOutputMaskPath)
-			outputMaskPath = new String(ch,start,length);
+		if(hasSalt)
+			salt = new String(ch,start,length);
 
-		if(hasOutputImagePath)
-			outputImagePath = new String(ch,start,length);
 		
 	}
 
 	public String getInputBrainAtlasImage(){return inputBrainAtlasImage;}
 	public String getInputBrainAtlasMask(){return inputBrainAtlasMask;}
 	public String getInputImage(){return inputImage;}
-	public String getOutputMaskPath(){return outputMaskPath;}
-	public String getOutputImagePath(){return outputImagePath;}
+	public String getSalt(){return salt;}
 	public boolean getError(){
 		return error;
 	}

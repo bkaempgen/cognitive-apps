@@ -1,11 +1,11 @@
 package kit.sfb.cognitive.apps.xnat;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.validator.routines.UrlValidator;
+
+import kit.sfb.cognitive.apps.pipeline.Pipeline;
 
 public class Test {
 
@@ -20,7 +20,12 @@ public class Test {
 		// URI uri = new
 		// URI("https://xnat.sfb125.de/data/projects/TP/resources/2/files/test_upload2.xml");
 		// Downloader.downloadFile(uri, "C:/Users/phiL/Desktop/tmp/test2.xml");
-
+		
+//		Pipeline.startPipeline();
+		
+		String uri = "http://141.52.218.34:8080/downloads/StripTs/26555008_result_image.nrrd";
+		UrlValidator urlValidator = new UrlValidator();
+		System.out.println(urlValidator.isValid(uri));
 		
 		
 	}

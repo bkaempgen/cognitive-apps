@@ -3,7 +3,6 @@ package kit.sfb.cognitive.apps.stripts;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import kit.sfb.cognitive.apps.helper.Helper;
 
 import org.xml.sax.InputSource;
 
-import com.google.common.io.CharStreams;
 import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 
 /**
@@ -25,13 +23,6 @@ import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 public class SFBServletStripTs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public SFBServletStripTs() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -60,8 +51,10 @@ public class SFBServletStripTs extends HttpServlet {
 		writer.println("<lapis:hasServiceDescription>http://localhost:8080/Prototyp/StripTs/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>T1 image of patient, atlasImage and atlasMask.</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Stripped image and mask of T1 patient.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/StripTs/RDF_Input_Example.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/StripTs/RDF_Output_Example.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/StripTs/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/StripTs/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/StripTs/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/StripTs/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -74,44 +67,108 @@ public class SFBServletStripTs extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		BufferedReader input = null;
+		RequestDataStripTs requestDataStripTs = null;
 
-		// Parse input according to request method
-		if (request.getParameter("RequestInput") != null) {
-			input = new BufferedReader(new StringReader(request.getParameter("RequestInput")));
-			System.out.println("+++++++JSP++++++++");
-			System.out.println(request.getParameter("RequestInput"));
-		} else {
-			input = new BufferedReader(new StringReader(CharStreams.toString(request.getReader())));
-			System.out.println("++++++Client++++++");
-			System.out.println(CharStreams.toString(request.getReader()));
-		}
-
+		String salt = null;
+		String requestURI = null;
+		String inputBrainAtlasImage = null;
+		String inputBrainAtlasMask = null;
+		String inputImage = null;
+		
+		long unixTimestamp = System.currentTimeMillis() / 1000L;
+		int random = (int) ((Math.random()) * 999999999 + 1);
+		
+		String inputBrainAtlasImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputBrainAtlasMaskPathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
+		
+		String resultImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/";
+		String resultMaskPathOnDisc = "C:/Users/phiL/Desktop/tmp/";
+		
+		String result = null;
+		String downloadLinkImage = null;
+		String downloadLinkMask = null;
+		
 		try {
-			RequestDataStripTs requestDataStripTs = importRequestDataStripTs(input);
+		
+			try {
+				
+				input = Helper.getRDFInformation(request);
+				
+				System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxx RDF Information xxxxxxxxxxxxxxxxxxxxxxxxx");
+				requestDataStripTs = importRequestDataStripTs(input);
+				
+				salt = requestDataStripTs.getSalt();
+				System.out.println("salt: " + salt);
+				
+				requestURI = requestDataStripTs.getRequestURI();
+				System.out.println("requestURI " + requestURI);
+				
+				inputBrainAtlasImage = requestDataStripTs.getInputBrainAtlasImage();
+				System.out.println("inputBrainAtlasImage: " + inputBrainAtlasImage);
+				
+				inputBrainAtlasMask = requestDataStripTs.getInputBrainAtlasMask();
+				System.out.println("inputBrainAtlasMask: " + inputBrainAtlasMask);
+				
+				inputImage = requestDataStripTs.getInputImage();
+				System.out.println("inputImage: " + inputImage);
+				
+			} catch (Throwable t) {
+				response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input!");
+			}
+			
+			if (!Helper.saltIsValid("StripTs", salt)) {
 
-			String inputBrainAtlasImage = requestDataStripTs.getInputBrainAtlasImage();
-			String inputBrainAtlasMask = requestDataStripTs.getInputBrainAtlasMask();
-			String inputImage = requestDataStripTs.getInputImage();
-			String outputMaskPath = requestDataStripTs.getOutputMaskPath();
-			String outputImagePath = requestDataStripTs.getOutputImagePath();
+				response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input - salt already used recently!");
 
-			// New execution style with helper class
-			List<String> parameters = new ArrayList<String>();
-			parameters.add(inputBrainAtlasImage);
-			parameters.add(inputBrainAtlasMask);
-			parameters.add(inputImage);
-			parameters.add(outputMaskPath);
-			parameters.add(outputImagePath);
-			String result = Helper.RunCommandLineTool("StripTs", parameters);
+			} else {
+				
+				try {
 
-			// Response
-			response.setContentType("application/xml");
+					inputBrainAtlasImagePathOnDisc = Helper.getFileFromPostRequest(inputBrainAtlasImage, inputBrainAtlasImagePathOnDisc, request);
+					System.out.println(inputBrainAtlasImagePathOnDisc);
+					
+					inputBrainAtlasMaskPathOnDisc = Helper.getFileFromPostRequest(inputBrainAtlasMask, inputBrainAtlasMaskPathOnDisc, request);
+					System.out.println(inputBrainAtlasMaskPathOnDisc);
+					
+					inputImagePathOnDisc = Helper.getFileFromPostRequest(inputImage, inputImagePathOnDisc, request);
+					System.out.println(inputImagePathOnDisc);
+					
+				} catch (Throwable t) {
+					response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input!");
+					throw new Exception();
+				}
+					
+				try {	
+					
+					resultImagePathOnDisc 	+= salt + "_result_image" + ".nrrd";
+					resultMaskPathOnDisc	+= salt + "_result_mask" + ".nrrd";
+					
+					List<String> parameters = new ArrayList<String>();
+					parameters.add(inputBrainAtlasImagePathOnDisc);
+					parameters.add(inputBrainAtlasMaskPathOnDisc);
+					parameters.add(inputImagePathOnDisc);
+					parameters.add(resultMaskPathOnDisc);
+					parameters.add(resultImagePathOnDisc);
+					
+					result = Helper.RunCommandLineTool("StripTs", parameters);
+					
+					boolean hasDownload = true;
+					if(result.equalsIgnoreCase("Failure! Please check quality of request data!")) hasDownload = false;
+					
+					downloadLinkImage 	= Helper.moveFileToDownloadFolder(resultMaskPathOnDisc, "StripTs");
+					downloadLinkMask 	= Helper.moveFileToDownloadFolder(resultImagePathOnDisc, "StripTs");
+					
+					response.setContentType("application/xml");
 
-			String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"http://localhost:8080/Prototyp/StripTs/Ontology#\">"
+					String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"http://localhost:8080/Prototyp/StripTs/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestDataStripTs.getRequestURI()
 					+ "\">"
 					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+					+ "<lapis:salt>"
+					+ requestDataStripTs.getSalt()
+					+ "</lapis:salt>"
 					+ "<stripts:hasInputBrainAtlasImage>"
 					+ requestDataStripTs.getInputBrainAtlasImage()
 					+ "</stripts:hasInputBrainAtlasImage>"
@@ -121,22 +178,35 @@ public class SFBServletStripTs extends HttpServlet {
 					+ "<stripts:hasInputImage>"
 					+ requestDataStripTs.getInputImage()
 					+ "</stripts:hasInputImage>"
-					+ "<stripts:hasOutputMaskPath>"
-					+ requestDataStripTs.getOutputMaskPath()
-					+ "</stripts:hasOutputMaskPath>"
-					+ "<stripts:hasOutputImagePath>"
-					+ requestDataStripTs.getOutputImagePath()
-					+ "</stripts:hasOutputImagePath>"
 					+ "<lapis:hasResult>"
 					+ result
-					+ "</lapis:hasResult>" + "</rdf:Description></rdf:RDF>";
+					+ "</lapis:hasResult>";
+					
+					if(hasDownload){
+						rdf +=	"<lapis:hasDownload>"+ downloadLinkMask + "</lapis:hasDownload>"
+							+	"<lapis:hasDownload>"+ downloadLinkImage + "</lapis:hasDownload>";
+					}
+							
+						rdf +="</rdf:Description></rdf:RDF>";
+					
+					
 
-			System.out.println(rdf);
-			response.getWriter().print(rdf);
+					System.out.println(rdf);
+					response.getWriter().print(rdf);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 
-		} catch (Throwable t) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND, "corrupt input");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Helper.deleteFileFromDisc(inputBrainAtlasImagePathOnDisc);
+			Helper.deleteFileFromDisc(inputBrainAtlasMaskPathOnDisc);
+			Helper.deleteFileFromDisc(inputImagePathOnDisc);
 		}
+
 	}
 
 	private RequestDataStripTs importRequestDataStripTs(BufferedReader reader) {
@@ -149,13 +219,13 @@ public class SFBServletStripTs extends HttpServlet {
 			parser.parse(new InputSource(reader));
 			// new ByteArrayInputStream(data.getBytes())));
 			if (handler.getError() || handler.getInputBrainAtlasImage() == null || handler.getInputBrainAtlasMask() == null
-					|| handler.getInputImage() == null || handler.getOutputMaskPath() == null || handler.getOutputImagePath() == null)
+					|| handler.getInputImage() == null || handler.getSalt() == null)
 				return null;
 		} catch (Throwable t) {
 			return null;
 		}
 		return new RequestDataStripTs(handler.getInputBrainAtlasImage(), handler.getInputBrainAtlasMask(), handler.getInputImage(),
-				handler.getOutputMaskPath(), handler.getOutputImagePath(), handler.getRequestURI());
+				handler.getSalt(), handler.getRequestURI());
 	}
 
 }

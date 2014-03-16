@@ -1,20 +1,35 @@
 package kit.sfb.cognitive.apps.pipeline;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 public class Pipeline {
 
-	public static void startPipeline() {
+	public static void startPipeline() throws IOException {
 
 		// Use Case: needed: brain segmentation and normalization of a given t1
 		// scan.
+		
+		int salt_1 = (int) ((Math.random()) * 999999999 + 1);
+		int salt_2 = (int) ((Math.random()) * 999999999 + 1);
+		int salt_3 = (int) ((Math.random()) * 999999999 + 1);
+		int salt_4 = (int) ((Math.random()) * 999999999 + 1);
+		int salt_5 = (int) ((Math.random()) * 999999999 + 1);
+		int salt_6 = (int) ((Math.random()) * 999999999 + 1);
+		int salt_7 = (int) ((Math.random()) * 999999999 + 1);
 
 		// given input
 		String t1Image = "C:/Users/phiL/Desktop/T1.nrrd";
@@ -37,27 +52,25 @@ public class Pipeline {
 
 		// Requests
 
-		// Cast atlasImage.mha to atlasImage.nrrd
+		// Cast atlasImage.mha to atlasImage.nrrd with File Upload
 		String requestXML1 = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://localhost:8080/Prototyp/Cast/Ontology#\">"
 				+ "<rdf:Description rdf:about=\"http://www.example.com/Request_01_Example\">"
 				+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+				+ "<lapis:salt>" +salt_1 + "</lapis:salt>"
 				+ "<cast:hasInputImage>"
-				+ atlasImage
+				+ "file"
 				+ "</cast:hasInputImage>"
-				+ "<cast:hasOutputImagePath>"
-				+ castAtlasOutputImageFile
-				+ "</cast:hasOutputImagePath>" + "</rdf:Description></rdf:RDF>";
+				+ "</rdf:Description></rdf:RDF>";
+		
 
 		// Cast atlasMask.mha to atlasMask.nrrd
 		String requestXML2 = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://localhost:8080/Prototyp/Cast/Ontology#\">"
 				+ "<rdf:Description rdf:about=\"http://www.example.com/Request_02_Example\">"
 				+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+				+ "<lapis:salt>" +salt_2 + "</lapis:salt>"
 				+ "<cast:hasInputImage>"
-				+ atlasMask
+				+ "file"
 				+ "</cast:hasInputImage>"
-				+ "<cast:hasOutputImagePath>"
-				+ castAtlasOutputMaskFile
-				+ "</cast:hasOutputImagePath>"
 				+ "</rdf:Description></rdf:RDF>";
 
 		// brain segmentation of T1 Image using atlasImage.nrrd and
@@ -102,10 +115,21 @@ public class Pipeline {
 
 		// Request 1
 		HttpPost post = new HttpPost(castURI);
-		post.setHeader("Content-Type", "application/xml");
+		MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+		//URL Encoded
+		
+		entity.addPart("RequestInput", new StringBody(requestXML1));
+		//File RDF
+		FileUtils.writeStringToFile(new File("request_1.xml"), requestXML1);
+		
+		
+		File fileToUpload = new File(atlasImage);
+		FileBody fileBody = new FileBody(fileToUpload, "application/octet-stream");
+		entity.addPart("file", fileBody);
+		//post.setHeader("Content-Type", "application/xml");
 
 		try {
-			post.setEntity(new StringEntity(requestXML1));
+			post.setEntity(entity);
 			client = clientbuilder.build();
 			response = client.execute(post);
 			printHeader(response);
@@ -114,42 +138,42 @@ public class Pipeline {
 			e.printStackTrace();
 		}
 
-		// Request 2
-		try {
-			post.setEntity(new StringEntity(requestXML2));
-			client = clientbuilder.build();
-			response = client.execute(post);
-			printHeader(response);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// Request 3
-		post = new HttpPost(striptsURI);
-		post.setHeader("Content-Type", "application/xml");
-		try {
-			post.setEntity(new StringEntity(requestXML3));
-			client = clientbuilder.build();
-			response = client.execute(post);
-			printHeader(response);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// Request 3
-		post = new HttpPost(meanfreeURI);
-		post.setHeader("Content-Type", "application/xml");
-		try {
-			post.setEntity(new StringEntity(requestXML4));
-			client = clientbuilder.build();
-			response = client.execute(post);
-			printHeader(response);
-			System.out.println("++++++++++++++++++++RESULT++++++++++++++++++++++");
-			System.out.println(meanfreeOutputImageFile);
-			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		// Request 2
+//		try {
+//			post.setEntity(new StringEntity(requestXML2));
+//			client = clientbuilder.build();
+//			response = client.execute(post);
+//			printHeader(response);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		// Request 3
+//		post = new HttpPost(striptsURI);
+//		post.setHeader("Content-Type", "application/xml");
+//		try {
+//			post.setEntity(new StringEntity(requestXML3));
+//			client = clientbuilder.build();
+//			response = client.execute(post);
+//			printHeader(response);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		// Request 3
+//		post = new HttpPost(meanfreeURI);
+//		post.setHeader("Content-Type", "application/xml");
+//		try {
+//			post.setEntity(new StringEntity(requestXML4));
+//			client = clientbuilder.build();
+//			response = client.execute(post);
+//			printHeader(response);
+//			System.out.println("++++++++++++++++++++RESULT++++++++++++++++++++++");
+//			System.out.println(meanfreeOutputImageFile);
+//			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 

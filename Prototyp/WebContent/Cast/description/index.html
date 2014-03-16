@@ -16,22 +16,23 @@ PREFIX cast: 	<http://localhost:8080/Prototyp/Cast/Ontology#>.
 			<td>Input:</td>
 			<td><textarea rows="10" cols="80">
 ?request		rdf:type		lapis:Request.
+?request		lapis:salt		?salt.
 ?request		cast:hasInputImage	?InputImage.
-?request		cast:hasOutputImagePath	?OutputImagePath.
+?salt			rdf:type		xs:string.
 ?InputImage		rdf:type		lapis:image.
-?OutputImagePath	rdf:type		lapis:directory.
 </textarea></td>
 		</tr>
 		<tr>
 			<td>Output:</td>
 			<td><textarea rows="10" cols="80">
 ?request		rdf:type		lapis:Request.
+?request		lapis:salt		?salt.
 ?request		cast:hasInputImage	?InputImage.
-?request		cast:hasOutputImagePath	?OutputImagePath.
+?salt			rdf:type		xs:string.
 ?InputImage		rdf:type		lapis:image.
-?OutputImagePath	rdf:type		lapis:directory.
 
 ?request 		lapis:hasResult		xs:string.
+?request		lapis:hasDownload	xs:string.
 
 </textarea></td>
 		</tr>

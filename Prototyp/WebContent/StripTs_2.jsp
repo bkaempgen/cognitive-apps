@@ -8,46 +8,31 @@
 		document.getElementById('example').style.display = "block";
 	}
 </script>
-<style type="text/css">
-<!--
-#box {
-position:relative; 
-z-index:3;}
-
-#box a {
-color:#ffffff;
-background:#FF0000;
-font:bold 16px verdana, sans-serif;
-text-decoration:none;
-display:block;
-padding:5px;
-border:1px solid black;}
-
-#box a:hover {
-color:black;
-background:#FF0000;
-width:1600x;}
-
-#box a span {display:none;}
-
-#box a:hover span {
-color:black;
-background:#ffffff;
-font:normal 16px verdana, sans-serif;
-border:1px solid black;
-display:block;
-padding:10px;}
--->
-</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>StripTs</title>
 </head>
 <body>
 	<div align="center">
-	<form action="SFBServletStripTs#i" method="POST">
-		<p><b>Request - Using Online Resource:</b></p>
+	<form action="SFBServletStripTs#i" method="POST" enctype="multipart/form-data">
+		<p><b>Request - Using File Upload:</b></p>
 		<div>
 			<textarea name="RequestInput" cols="80" rows="4"></textarea>
+			<br/>
+			<table>
+				<tr>
+					<td align="left"><b><u>file1:</u></b></td>
+					<td align="left"><b><u>file2:</u></b></td>
+					<td align="left"><b><u>file3:</u></b></td>
+				</tr>
+				<tr>
+					<td><input type="file" name="file1" size="50" /></td>
+					<td><input type="file" name="file2" size="50" /></td>
+					<td><input type="file" name="file3" size="50" /></td>
+				</tr>
+			</table>
+			<br/>
+			<br/>
+			<br/>
 			<input type="submit" value="Post Request"/>
 		</div>
 	</form>
@@ -67,16 +52,15 @@ padding:10px;}
   
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
     <rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
-    <lapis:salt>80844534</lapis:salt>
-	<stripts:hasInputBrainAtlasImage>https://xnat.sfb125.de/data/projects/CAUC/resources/Example_Data/files/atlasImage.mha</stripts:hasInputBrainAtlasImage>
-	<stripts:hasInputBrainAtlasMask>https://xnat.sfb125.de/data/projects/CAUC/resources/Example_Data/files/atlasMask.mha</stripts:hasInputBrainAtlasMask>
-	<stripts:hasInputImage>https://xnat.sfb125.de/data/projects/CAUC/resources/Example_Data/files/T1.nrrd</stripts:hasInputImage>
+    <lapis:salt>11793854</lapis:salt>
+	<stripts:hasInputBrainAtlasImage>file1</stripts:hasInputBrainAtlasImage>
+	<stripts:hasInputBrainAtlasMask>file2</stripts:hasInputBrainAtlasMask>
+	<stripts:hasInputImage>file3</stripts:hasInputImage>
 </rdf:Description>
 </rdf:RDF>
 					</textarea>
 	</div>
 	<br/>
 	<br/>
-	<div align ="center" id="box"><a href="http://localhost:8080/Prototyp/StripTs_2.jsp">Want to do Request with File Upload?<span>Click here!</span></a></div>
 </body>
 </html>

@@ -8,47 +8,27 @@
 		document.getElementById('example').style.display = "block";
 	}
 </script>
-<style type="text/css">
-<!--
-#box {
-position:relative; 
-z-index:3;}
-
-#box a {
-color:#ffffff;
-background:#FF0000;
-font:bold 16px verdana, sans-serif;
-text-decoration:none;
-display:block;
-padding:5px;
-border:1px solid black;}
-
-#box a:hover {
-color:black;
-background:#FF0000;
-width:1600x;}
-
-#box a span {display:none;}
-
-#box a:hover span {
-color:black;
-background:#ffffff;
-font:normal 16px verdana, sans-serif;
-border:1px solid black;
-display:block;
-padding:10px;}
--->
-</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cast</title>
 </head>
 <body>
 	<div align="center">
-	<form action="SFBServletCast#i" method="POST">
-		<p><b>Request - Using Online Resource:</b></p>
+	<form action="SFBServletCast#i" method="POST" enctype="multipart/form-data">
+		<p><b>Request - Using File Upload:</b></p>
 		<div>
 			<textarea name="RequestInput" cols="80" rows="4"></textarea>
 			<br />
+			<table>
+				<tr>
+					<td align="center"><b><u>file1:</u></b></td>
+				</tr>
+				<tr>
+					<td><input type="file" name="file" size="50" /></td>
+				</tr>
+			</table>
+			<br/>
+			<br/>
+			<br/>
 			<input type="submit" value="Post Request" />
 		</div>
 	</form>
@@ -60,7 +40,7 @@ padding:10px;}
 	</div>
 	<div align="center" id="example" style="display: none;" class="answer_list">
 	<div align="center">Example:</div>
-	<textarea name="Example1" cols="140" rows="15">
+	<textarea name="Example1" cols="95" rows="15">
 <rdf:RDF
     xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -68,14 +48,13 @@ padding:10px;}
   
 	<rdf:Description rdf:about="http://www.example.com/Request_01_Example">
    		<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
-		<lapis:salt>14423223122255</lapis:salt>
-		<cast:hasInputImage>https://xnat.sfb125.de/data/projects/CAUC/resources/Example_Data/files/atlasMask.mha</cast:hasInputImage>
+		<lapis:salt>1223122255</lapis:salt>
+		<cast:hasInputImage>file</cast:hasInputImage>
 	</rdf:Description>
 </rdf:RDF>
 					</textarea>
 	</div>
 	<br/>
 	<br/>
-	<div align ="center" id="box"><a href="http://localhost:8080/Prototyp/Cast_2.jsp">Want to do Request with File Upload?<span>Click here!</span></a></div>
 </body>
 </html>

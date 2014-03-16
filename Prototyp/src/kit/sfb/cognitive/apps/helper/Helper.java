@@ -99,6 +99,13 @@ public class Helper {
 
 					}
 				}
+				if (line.contains("ERROR")) {
+					result = "Failure! Please check quality of request data!";
+					return result;
+				}
+				
+				
+				
 
 			}
 			result = "Success!";
@@ -119,19 +126,19 @@ public class Helper {
 	}
 
 	public static String moveFileToDownloadFolder(String filePath, String webFolder) {
-		String path = "C:/Users/phiL/git/cognitive-apps/Prototyp/WebContent/download/" + webFolder + "/";
+		String path = "F:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/downloads/" + webFolder + "/";
 
 		File oldLocation = new File(filePath);
 		path += oldLocation.getName();
 		File newLocation = new File(path);
 		oldLocation.renameTo(newLocation);
-		return ("http://localhost:8080/Prototyp/download/" + webFolder + "/" + oldLocation.getName());
+		return ("http://localhost:8080/downloads/" + webFolder + "/" + oldLocation.getName());
 
 	}
 
 	public static boolean saltIsValid(String webFolder, String salt) {
 
-		String path = "C:/Users/phiL/git/cognitive-apps/Prototyp/WebContent/download/" + webFolder + "/";
+		String path = "F:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/downloads/" + webFolder + "/";
 
 		File folder = new File(path);
 

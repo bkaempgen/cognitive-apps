@@ -13,24 +13,25 @@ PREFIX meanfree: 	<http://localhost:8080/Prototyp/MeanFree/Ontology#>.
 
 <tr><td>Input: </td><td><textarea rows="10" cols="80">
 ?request		rdf:type			lapis:Request.
+?request		lapis:salt			?salt.
 ?request		meanfree:hasInputImage		?InputImage.
 ?request		meanfree:hasInputMaskImage	?InputMaskImage.
-?request		meanfree:hasOutputImagePath	?OutputImagePath.
+?salt			rdf:type			xs:string.
 ?InputImage		rdf:type			lapis:image.
 ?InputMaskImage 	rdf:type			lapis:image
-?OutputImagePath	rdf:type			lapis:directory.
 </textarea></td></tr>
 <tr><td>Output: </td>
 <td><textarea rows="15" cols="80">
 ?request		rdf:type			lapis:Request.
+?request		lapis:salt			?salt.
 ?request		meanfree:hasInputImage		?InputImage.
 ?request		meanfree:hasInputMaskImage	?InputMaskImage.
-?request		meanfree:hasOutputImagePath	?OutputImagePath.
+?salt			rdf:type			xs:string.
 ?InputImage		rdf:type			lapis:image.
 ?InputMaskImage 	rdf:type			lapis:image
-?OutputImagePath	rdf:type			lapis:directory.
 
 ?request 		lapis:hasResult			xs:string.
+?request		lapis:hasDownload		xs:string.
 
 </textarea></td></tr></table>
 </body></html>
