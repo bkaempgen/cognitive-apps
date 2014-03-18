@@ -44,12 +44,12 @@
 	<div align="center">Example:</div>
 	<textarea name="Example1" cols="140" rows="15">
 <rdf:RDF
-    xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
+    xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:meanfree="http://localhost:8080/Prototyp/MeanFree/Ontology#"> 
+    xmlns:meanfree="http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#"> 
   
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-    <rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+    <rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
     <lapis:salt>53078053</lapis:salt>
 	<meanfree:hasInputImage>file1</meanfree:hasInputImage>
 	<meanfree:hasInputMaskImage>none</meanfree:hasInputMaskImage>

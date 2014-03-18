@@ -44,9 +44,9 @@ public class SFBServletTranslator extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletTranslator#i\">");
+		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletTranslator#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Translator Service: XML-CTK/Slicer Description to RDF</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Translator Service: XML-CTK/Slicer Beschreibung zu RDF</rdfs:label>");
@@ -56,8 +56,8 @@ public class SFBServletTranslator extends HttpServlet {
 		writer.println("<lapis:hasAbstract xml:lang=\"en\">Casts a given xml description of a CDL to an aquivalent rdf description.</lapis:hasAbstract>");
 		writer.println("<lapis:hasInputDescription>XML Description of CDL.</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>RDF Descrption of CDL</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/Translator/Input_Example.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/Translator/Output_Example.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/Translator/Input_Example.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/Translator/Output_Example.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -85,7 +85,7 @@ public class SFBServletTranslator extends HttpServlet {
 				.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 		// Stuff for XSLT
-		File xsltFile = new File("C:/Users/phiL/Desktop/ctk.xslt");
+		File xsltFile = new File("/data/SFB/ctk.xslt");
 		Source xmlSource = new StreamSource(input);
 		Source xsltSource = new StreamSource(xsltFile);
 

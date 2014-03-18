@@ -62,12 +62,12 @@ padding:10px;}
 	<div align="center">Example:</div>
 	<textarea name="Example1" cols="140" rows="15">
 <rdf:RDF
-    xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
+    xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:meanfree="http://localhost:8080/Prototyp/MeanFree/Ontology#"> 
+    xmlns:meanfree="http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#"> 
   
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-    <rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+    <rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
     <lapis:salt>27064233</lapis:salt>
 	<meanfree:hasInputImage>https://xnat.sfb125.de/data/projects/CAUC/resources/Example_Data/files/T1.nrrd</meanfree:hasInputImage>
 	<meanfree:hasInputMaskImage>none</meanfree:hasInputMaskImage>
@@ -77,6 +77,6 @@ padding:10px;}
 	</div>
 	<br/>
 	<br/>
-	<div align ="center" id="box"><a href="http://localhost:8080/Prototyp/MeanFree_2.jsp">Want to do Request with File Upload?<span>Click here!</span></a></div>
+	<div align ="center" id="box"><a href="http://141.52.218.34:8080/Prototyp/MeanFree_2.jsp">Want to do Request with File Upload?<span>Click here!</span></a></div>
 </body>
 </html>

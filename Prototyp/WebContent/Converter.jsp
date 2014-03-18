@@ -110,6 +110,6 @@ return
 	<br />
 	<br />
 	<br />
-	<div align ="center" id="box"><a href="http://localhost:8080/Prototyp/Converter_2.jsp">Want to POST XML/RDF also?<span>Click here!</span></a></div>
+	<div align ="center" id="box"><a href="http://141.52.218.34:8080/Prototyp/Converter_2.jsp">Want to POST XML/RDF also?<span>Click here!</span></a></div>
 </body>
 </html>

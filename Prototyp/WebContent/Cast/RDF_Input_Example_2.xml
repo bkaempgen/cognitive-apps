@@ -1,10 +1,10 @@
 <rdf:RDF
-    xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
+    xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#"> 
+    xmlns:cast="http://141.52.218.34:8080/Prototyp/Cast/Ontology#"> 
   
 	<rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-   		<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+   		<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 		<lapis:salt>1223122255</lapis:salt>
 		<cast:hasInputImage>file</cast:hasInputImage>
 	</rdf:Description>

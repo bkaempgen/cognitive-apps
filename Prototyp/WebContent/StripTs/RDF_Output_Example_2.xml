@@ -1,16 +1,16 @@
 <rdf:RDF
-    xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
+    xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:stripts="http://localhost:8080/Prototyp/StripTs/Ontology#"> 
+    xmlns:stripts="http://141.52.218.34:8080/Prototyp/StripTs/Ontology#"> 
   
 <rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-    <rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+    <rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
     <lapis:salt>11793854</lapis:salt>
 	<stripts:hasInputBrainAtlasImage>file1</stripts:hasInputBrainAtlasImage>
 	<stripts:hasInputBrainAtlasMask>file2</stripts:hasInputBrainAtlasMask>
 	<stripts:hasInputImage>file3</stripts:hasInputImage>
 	<lapis:hasResult>Success!</lapis:hasResult>
-	<lapis:hasDownload>http://localhost:8080/downloads/StripTs/11793854_result_mask.nrrd</lapis:hasDownload>
-	<lapis:hasDownload>http://localhost:8080/downloads/StripTs/11793854_result_image.nrrd</lapis:hasDownload>
+	<lapis:hasDownload>http://141.52.218.34:8080/downloads/StripTs/11793854_result_mask.nrrd</lapis:hasDownload>
+	<lapis:hasDownload>http://141.52.218.34:8080/downloads/StripTs/11793854_result_image.nrrd</lapis:hasDownload>
 </rdf:Description>
 </rdf:RDF>

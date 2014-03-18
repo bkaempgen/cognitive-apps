@@ -22,15 +22,15 @@
 				<td>
 					<table>
 						<tr>
-							<td align="center"><a href="http://localhost:8080/Prototyp/Ontology/CTK">CTK</a></td>
-							<td align="center"><a href="http://localhost:8080/Prototyp/Ontology/Lapis">LAPIS</a></td>
+							<td align="center"><a href="http://141.52.218.34:8080/Prototyp/Ontology/CTK">CTK</a></td>
+							<td align="center"><a href="http://141.52.218.34:8080/Prototyp/Ontology/Lapis">LAPIS</a></td>
 						</tr> 
 					</table>
 				</td>
 				<td>
 					<table>
 						<tr>
-							<td align="center"><a href="http://localhost:8080/Prototyp/Mockup.jsp">Mockup</a></td>
+							<td align="center"><a href="http://141.52.218.34:8080/Prototyp/Mockup.jsp">Mockup</a></td>
 						</tr> 
 					</table>
 				</td>
@@ -53,17 +53,17 @@
 		<tr>
 			<td><a href="SFBServletCast#i">Cast:</a></td>
 			<td/>
-			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Cast.jsp">JSP</a></td>
+			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/Cast.jsp">JSP</a></td>
 		</tr>
 		<tr>
 			<td><a href="SFBServletMeanFree#i">MeanFree:</a></td>
 			<td/>
-			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/MeanFree.jsp">JSP</a></td>
+			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/MeanFree.jsp">JSP</a></td>
 		</tr>
 		<tr>
 			<td><a href="SFBServletStripTs#i">StripTs:</a></td>
 			<td/>
-			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/StripTs.jsp">JSP</a></td>
+			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/StripTs.jsp">JSP</a></td>
 		</tr>
 		<tr bgcolor="#FF0000">
 			<th colspan="3">Converter</th>
@@ -76,7 +76,7 @@
 		<tr>
 			<td><a href="SFBServletXSPARQL#i">XSPARQL:</a></td>
 			<td align="center" >XML&harr;RDF</td>
-			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Converter.jsp">JSP</a></td>
+			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/Converter.jsp">JSP</a></td>
 		</tr>
 		<tr bgcolor="#FF0000">
 			<th colspan="3">CTK-Description</th>
@@ -89,12 +89,12 @@
 		<tr>
 			<td><a href="SFBServletTranslator#i">CTK-Translator:</a></td>
 			<td align="center" valign="middle">XML&rarr;RDF</td>
-			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Translator.jsp">JSP</a></td>
+			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/Translator.jsp">JSP</a></td>
 		</tr>
 		<tr>
 			<td><a href="SFBServletDescriber#i">CTK-Describer:</a></td>
 			<td align="center" valign="middle">RDF&rarr;SPARQL</td>
-			<td align="center" valign="middle"><a href="http://localhost:8080/Prototyp/Describer.jsp">JSP</a></td>
+			<td align="center" valign="middle"><a href="http://141.52.218.34:8080/Prototyp/Describer.jsp">JSP</a></td>
 		</tr>
 	</table>
 	</div>

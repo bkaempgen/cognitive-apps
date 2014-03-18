@@ -1,22 +1,22 @@
 <rdf:RDF 
-	xmlns:ctk="http://localhost:8080/Prototyp/Ontology/CTK#" 
+	xmlns:ctk="http://141.52.218.34:8080/Prototyp/Ontology/CTK#" 
 	xmlns:owl="http://www.w3.org/2002/07/owl#" 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543#i">
-	<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#executable"/>
+<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543#i">
+	<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#executable"/>
 	<ctk:hasTitle>Batch Registration</ctk:hasTitle>
 	<ctk:hasDescription> Registration of several files in a folder to one reference image, including derived resources such as segmentations etc.</ctk:hasDescription>
 	<ctk:hasCategory>Registration</ctk:hasCategory>
 	<ctk:hasContributor>MBI</ctk:hasContributor>
 	<ctk:hasParameterGroup>
-		<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552#i">
-			<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameterGroup"/>
+		<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552#i">
+			<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameterGroup"/>
 			<ctk:hasParameterGroupLabel>Registration Input</ctk:hasParameterGroupLabel>
 			<ctk:hasParameterGroupDescription>Set the input and output folders</ctk:hasParameterGroupDescription>
 			<ctk:hasParameter>
-				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65560#i">
-					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+				<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65560#i">
+					<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameter"/>
 					<ctk:hasParameterType>string</ctk:hasParameterType>
 					<ctk:hasParameterName>refFileVar</ctk:hasParameterName>
 					<ctk:hasParameterFlag>f</ctk:hasParameterFlag>
@@ -25,8 +25,8 @@
 				</rdf:Description>
 			</ctk:hasParameter>
 			<ctk:hasParameter>
-				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65575#i">
-					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+				<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65575#i">
+					<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameter"/>
 					<ctk:hasParameterType>directory</ctk:hasParameterType>
 					<ctk:hasParameterName>inputFolderVar</ctk:hasParameterName>
 					<ctk:hasParameterFlag>i</ctk:hasParameterFlag>
@@ -35,8 +35,8 @@
 				</rdf:Description>
 			</ctk:hasParameter>
 			<ctk:hasParameter>
-				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65590#i">
-					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+				<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65590#i">
+					<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameter"/>
 					<ctk:hasParameterType>string</ctk:hasParameterType>
 					<ctk:hasParameterName>derPatternVar</ctk:hasParameterName>
 					<ctk:hasParameterFlag>d</ctk:hasParameterFlag>
@@ -46,8 +46,8 @@
 				</rdf:Description>
 			</ctk:hasParameter>
 			<ctk:hasParameter>
-				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65608#i">
-					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+				<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65608#i">
+					<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameter"/>
 					<ctk:hasParameterType>string</ctk:hasParameterType>
 					<ctk:hasParameterName>regPattern</ctk:hasParameterName>
 					<ctk:hasParameterFlag>m</ctk:hasParameterFlag>
@@ -57,8 +57,8 @@
 				</rdf:Description>
 			</ctk:hasParameter>
 			<ctk:hasParameter>
-				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65626#i">
-					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+				<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65626#i">
+					<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameter"/>
 					<ctk:hasParameterType>directory</ctk:hasParameterType>
 					<ctk:hasParameterName>outputFolderVar</ctk:hasParameterName>
 					<ctk:hasParameterFlag>o</ctk:hasParameterFlag>
@@ -67,8 +67,8 @@
 				</rdf:Description>
 			</ctk:hasParameter>
 			<ctk:hasParameter>
-				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65641#i">
-					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+				<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65641#i">
+					<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameter"/>
 					<ctk:hasParameterType>boolean</ctk:hasParameterType>
 					<ctk:hasParameterName>useMasking</ctk:hasParameterName>
 					<ctk:hasParameterFlag>u</ctk:hasParameterFlag>
@@ -78,8 +78,8 @@
 				</rdf:Description>
 			</ctk:hasParameter>
 			<ctk:hasParameter>
-				<rdf:Description rdf:about="http://localhost:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65659#i">
-					<rdf:type rdf:resource="http://localhost:8080/Prototyp/CTK/Ontology#parameter"/>
+				<rdf:Description rdf:about="http://141.52.218.34:8080/CTK/Registration/BatchRegistration/N65543/ParameterGroup/N65552/Parameter/N65659#i">
+					<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/CTK/Ontology#parameter"/>
 					<ctk:hasParameterType>string</ctk:hasParameterType>
 					<ctk:hasParameterName>resampleFile</ctk:hasParameterName>
 					<ctk:hasParameterFlag>r</ctk:hasParameterFlag>

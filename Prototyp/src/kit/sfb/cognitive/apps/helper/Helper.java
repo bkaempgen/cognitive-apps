@@ -57,7 +57,7 @@ public class Helper {
 	@SuppressWarnings("deprecation")
 	public static String RunCommandLineTool(String servicename, List<String> parameters) throws IOException {
 
-		String mitkCommandLine = "F:/KIT/Master/Masterthesis - MITK/SFB-Files/MITK-2013.09.00-win64/MITK-2013.09.00-win64/bin/mitkBrainStrippingMiniApps.exe";
+		String mitkCommandLine = "sh /data/SFB/MITK/MITK-MBI-2013.12.99-linux64/mitkBrainStrippingMiniApps.sh";
 		String command = mitkCommandLine + " " + servicename;
 
 		// Build command from parameters
@@ -126,19 +126,19 @@ public class Helper {
 	}
 
 	public static String moveFileToDownloadFolder(String filePath, String webFolder) {
-		String path = "F:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/downloads/" + webFolder + "/";
+		String path = "/usr/local/tomcat/webapps/downloads/" + webFolder + "/";
 
 		File oldLocation = new File(filePath);
 		path += oldLocation.getName();
 		File newLocation = new File(path);
 		oldLocation.renameTo(newLocation);
-		return ("http://localhost:8080/downloads/" + webFolder + "/" + oldLocation.getName());
+		return ("http://141.52.218.34:8080/downloads/" + webFolder + "/" + oldLocation.getName());
 
 	}
 
 	public static boolean saltIsValid(String webFolder, String salt) {
 
-		String path = "F:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/downloads/" + webFolder + "/";
+		String path = "/usr/local/tomcat/webapps/downloads/" + webFolder + "/";
 
 		File folder = new File(path);
 
@@ -199,7 +199,7 @@ public class Helper {
 		pathOnDisc = pathOnDisc + getFileName(uri);
 
 		// Credentials
-		byte[] encodedBytes = Base64.encodeBase64(Files.readAllBytes(Paths.get("C:/Users/phiL/Desktop/xnat_auth.txt")));
+		byte[] encodedBytes = Base64.encodeBase64(Files.readAllBytes(Paths.get("/data/SFB/xnat_auth.txt")));
 		String encoding = new String(encodedBytes);
 
 		InputStream inputstream = null;

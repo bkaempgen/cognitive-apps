@@ -5,8 +5,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class RDImportHandlerMeanFree extends DefaultHandler {
-	private final String NAMESPACE_URI = "http://localhost:8080/Prototyp/MeanFree/Ontology#";
-	private final String NAMESPACE_URI_LAPIS = "http://localhost:8080/Prototyp/Ontology/Lapis#";
+	private final String NAMESPACE_URI = "http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#";
+	private final String NAMESPACE_URI_LAPIS = "http://141.52.218.34:8080/Prototyp/Ontology/Lapis#";
 	private boolean error = false;
 	private boolean hasInputImage = false;
 	private boolean hasInputMaskImage = false;

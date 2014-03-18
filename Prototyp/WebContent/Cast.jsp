@@ -62,12 +62,12 @@ padding:10px;}
 	<div align="center">Example:</div>
 	<textarea name="Example1" cols="140" rows="15">
 <rdf:RDF
-    xmlns:lapis="http://localhost:8080/Prototyp/Ontology/Lapis#"
+    xmlns:lapis="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:cast="http://localhost:8080/Prototyp/Cast/Ontology#"> 
+    xmlns:cast="http://141.52.218.34:8080/Prototyp/Cast/Ontology#"> 
   
 	<rdf:Description rdf:about="http://www.example.com/Request_01_Example">
-   		<rdf:type rdf:resource="http://localhost:8080/Prototyp/Ontology/Lapis#Request"/>
+   		<rdf:type rdf:resource="http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request"/>
 		<lapis:salt>14423223122255</lapis:salt>
 		<cast:hasInputImage>https://xnat.sfb125.de/data/projects/CAUC/resources/Example_Data/files/atlasMask.mha</cast:hasInputImage>
 	</rdf:Description>
@@ -76,6 +76,6 @@ padding:10px;}
 	</div>
 	<br/>
 	<br/>
-	<div align ="center" id="box"><a href="http://localhost:8080/Prototyp/Cast_2.jsp">Want to do Request with File Upload?<span>Click here!</span></a></div>
+	<div align ="center" id="box"><a href="http://141.52.218.34:8080/Prototyp/Cast_2.jsp">Want to do Request with File Upload?<span>Click here!</span></a></div>
 </body>
 </html>

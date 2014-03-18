@@ -37,9 +37,9 @@ public class SFBServletStripTs extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://localhost:8080/Prototyp/SFBServletStripTs#i\">");
+		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletStripTs#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-StripTs-Service</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-StripTs-Service</rdfs:label>");
@@ -48,13 +48,13 @@ public class SFBServletStripTs extends HttpServlet {
 		writer.println("<lapis:hasAbstract xml:lang=\"de\">Segmentierung des Gehirns einer Kopfaufnahme.</lapis:hasAbstract>");
 		writer.println("<lapis:hasAbstract xml:lang=\"en\">Segmentation of brain in a head scan.</lapis:hasAbstract>");
 		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
-		writer.println("<lapis:hasServiceDescription>http://localhost:8080/Prototyp/StripTs/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasServiceDescription>http://141.52.218.34:8080/Prototyp/StripTs/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>T1 image of patient, atlasImage and atlasMask.</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Stripped image and mask of T1 patient.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/StripTs/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/StripTs/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
-		writer.println("<lapis:hasExampleRequest>http://localhost:8080/Prototyp/StripTs/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://localhost:8080/Prototyp/StripTs/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -78,12 +78,12 @@ public class SFBServletStripTs extends HttpServlet {
 		long unixTimestamp = System.currentTimeMillis() / 1000L;
 		int random = (int) ((Math.random()) * 999999999 + 1);
 		
-		String inputBrainAtlasImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
-		String inputBrainAtlasMaskPathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
-		String inputImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputBrainAtlasImagePathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputBrainAtlasMaskPathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputImagePathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
 		
-		String resultImagePathOnDisc = "C:/Users/phiL/Desktop/tmp/";
-		String resultMaskPathOnDisc = "C:/Users/phiL/Desktop/tmp/";
+		String resultImagePathOnDisc = "/data/SFB/tmp/";
+		String resultMaskPathOnDisc = "/data/SFB/tmp/";
 		
 		String result = null;
 		String downloadLinkImage = null;
@@ -161,11 +161,11 @@ public class SFBServletStripTs extends HttpServlet {
 					
 					response.setContentType("application/xml");
 
-					String rdf = "<rdf:RDF xmlns:lapis=\"http://localhost:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"http://localhost:8080/Prototyp/StripTs/Ontology#\">"
+					String rdf = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"http://141.52.218.34:8080/Prototyp/StripTs/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestDataStripTs.getRequestURI()
 					+ "\">"
-					+ "<rdf:type rdf:resource=\"http://localhost:8080/Prototyp/Ontology/Lapis#Request\"/>"
+					+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
 					+ "<lapis:salt>"
 					+ requestDataStripTs.getSalt()
 					+ "</lapis:salt>"
