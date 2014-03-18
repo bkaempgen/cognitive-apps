@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.URI;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.util.Iterator;
@@ -125,14 +126,17 @@ public class Helper {
 		System.out.println("++++++++++++Input-File deleted++++++++++++++");
 	}
 
-	public static String moveFileToDownloadFolder(String filePath, String webFolder) {
-		String path = "/usr/local/tomcat/webapps/downloads/" + webFolder + "/";
+	public static String moveFileToDownloadFolder(String filePath, String webFolder) throws IOException {
+		
+		File input = new File(filePath);
+		
+		String webpath = "/usr/local/tomcat/webapps/downloads/" + webFolder + "/" + input.getName();
+		
+		Path moveSourcePath = Paths.get(filePath);
+		Path moveTargetPath = Paths.get(webpath);
+		Files.move( moveSourcePath, moveTargetPath );
 
-		File oldLocation = new File(filePath);
-		path += oldLocation.getName();
-		File newLocation = new File(path);
-		oldLocation.renameTo(newLocation);
-		return ("http://141.52.218.34:8080/downloads/" + webFolder + "/" + oldLocation.getName());
+		return ("http://141.52.218.34:8080/downloads/" + webFolder + "/" + input.getName());
 
 	}
 
