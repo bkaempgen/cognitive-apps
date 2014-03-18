@@ -82,8 +82,8 @@ public class Helper {
 				System.out.println(line);
 
 				// Extract output path
-				if (line.contains("core.io.imgWriter: Writing image:")) {
-					Pattern myPattern = Pattern.compile(".*(core.io.imgWriter: Writing image: )(.*)");
+				if (line.contains("Writing image:")) {
+					Pattern myPattern = Pattern.compile(".*(Writing image: )(.*)");
 					Matcher m = myPattern.matcher(line);
 					if (m.matches()) {
 
