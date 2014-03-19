@@ -4,24 +4,27 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Reader;
 import java.io.StringReader;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.KeyStore;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
-
-import kit.sfb.cognitive.apps.xnat.MySSLSocketFactory;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.fileupload.FileItem;
@@ -51,6 +54,7 @@ import org.apache.http.protocol.HTTP;
 import com.google.common.io.CharStreams;
 
 public class Helper {
+	static String host = Helper.getProperties("host");
 
 	static List<FileItem> formItemsStore;
 
@@ -58,7 +62,7 @@ public class Helper {
 	@SuppressWarnings("deprecation")
 	public static String RunCommandLineTool(String servicename, List<String> parameters) throws IOException {
 
-		String mitkCommandLine = "sh /data/SFB/MITK/MITK-MBI-2013.12.99-linux64/mitkBrainStrippingMiniApps.sh";
+		String mitkCommandLine = Helper.getProperties("mitkCDL");
 		String command = mitkCommandLine + " " + servicename;
 
 		// Build command from parameters
@@ -104,9 +108,6 @@ public class Helper {
 					result = "Failure! Please check quality of request data!";
 					return result;
 				}
-				
-				
-				
 
 			}
 			result = "Success!";
@@ -126,23 +127,80 @@ public class Helper {
 		System.out.println("++++++++++++Input-File deleted++++++++++++++");
 	}
 
+	public static String getProperties(String key) {
+		Reader reader = null;
+		String propertyFilePath = null;
+		try {
+
+			if (System.getProperty("os.name").toLowerCase().equalsIgnoreCase("windows 7")) {
+				propertyFilePath = "C:/Users/phiL/Desktop/localhost.properties";
+			} else {
+				propertyFilePath = "/data/SFB/vm.properties";
+			}
+
+			reader = new FileReader(propertyFilePath);
+
+			Properties prop = new Properties();
+			prop.load(reader);
+			return prop.getProperty(key);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				reader.close();
+			} catch (Exception e) {
+			}
+		}
+	}
+
 	public static String moveFileToDownloadFolder(String filePath, String webFolder) throws IOException {
-		
+
 		File input = new File(filePath);
-		
-		String webpath = "/usr/local/tomcat/webapps/downloads/" + webFolder + "/" + input.getName();
-		
+
+		String webpath = Helper.getProperties("tomcat_downloads") + webFolder + "/" + input.getName();
+
 		Path moveSourcePath = Paths.get(filePath);
 		Path moveTargetPath = Paths.get(webpath);
-		Files.move( moveSourcePath, moveTargetPath );
+		Files.move(moveSourcePath, moveTargetPath);
 
-		return ("http://141.52.218.34:8080/downloads/" + webFolder + "/" + input.getName());
+		return (host + "downloads/" + webFolder + "/" + input.getName());
+
+	}
+
+	private static void deleteExpiredFiles() {
+		String webfolder = Helper.getProperties("tomcat_downloads");
+		int min_threshold = 10;
+
+		String castFolder = webfolder + "Cast/";
+		String striptsFolder = webfolder + "StripTs/";
+		String meanfreeFolder = webfolder + "MeanFree/";
+
+		List<String> folders = new ArrayList<String>();
+		folders.add(castFolder);
+		folders.add(striptsFolder);
+		folders.add(meanfreeFolder);
+
+		for (String f : folders) {
+
+			File folder = new File(f);
+
+			for (File fileEntry : folder.listFiles()) {
+				long diff = new Date().getTime() - fileEntry.lastModified();
+				if (diff > min_threshold * 60 * 1000) {
+					fileEntry.delete();
+				}
+
+			}
+
+		}
 
 	}
 
 	public static boolean saltIsValid(String webFolder, String salt) {
-
-		String path = "/usr/local/tomcat/webapps/downloads/" + webFolder + "/";
+		
+		deleteExpiredFiles();
+		String path = Helper.getProperties("tomcat_downloads") + webFolder + "/";
 
 		File folder = new File(path);
 
@@ -203,7 +261,7 @@ public class Helper {
 		pathOnDisc = pathOnDisc + getFileName(uri);
 
 		// Credentials
-		byte[] encodedBytes = Base64.encodeBase64(Files.readAllBytes(Paths.get("/data/SFB/xnat_auth.txt")));
+		byte[] encodedBytes = Base64.encodeBase64(Files.readAllBytes(Paths.get(Helper.getProperties("xnat_auth"))));
 		String encoding = new String(encodedBytes);
 
 		InputStream inputstream = null;

@@ -20,7 +20,7 @@
 			<br />
 			<table>
 				<tr>
-					<td align="center"><b><u>file1:</u></b></td>
+					<td align="center"><b><u>file:</u></b></td>
 				</tr>
 				<tr>
 					<td><input type="file" name="file" size="50" /></td>

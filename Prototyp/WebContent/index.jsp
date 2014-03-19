@@ -16,7 +16,7 @@
 		<table>
 			<tr>
 				<th>Ontologies:</th>
-				<th>Pipeline:</th>
+				<th>Pipeline cURL:</th>
 			</tr>
 			<tr>
 				<td>
@@ -30,10 +30,12 @@
 				<td>
 					<table>
 						<tr>
-							<td align="center"><a href="http://141.52.218.34:8080/Prototyp/Mockup.jsp">Mockup</a></td>
-						</tr> 
+							<td align="center"><a href="http://141.52.218.34:8080/downloads/cURL-Pipeline-Windows.zip">Download-Windows</a></td>
+							<td align="center"><a href="http://141.52.218.34:8080/downloads/cURL-Pipeline-Linux.zip">Download-Linux</a></td>
+						</tr>
 					</table>
 				</td>
+				
 			</tr>
 		</table>
 	</div>

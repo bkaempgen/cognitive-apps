@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kit.sfb.cognitive.apps.helper.Helper;
+
 import org.deri.xsparql.evaluator.XSPARQLEvaluator;
 
 /**
@@ -27,6 +29,7 @@ import org.deri.xsparql.evaluator.XSPARQLEvaluator;
  */
 public class SFBServletXSPARQL extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String host = Helper.getProperties("host");
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -47,9 +50,9 @@ public class SFBServletXSPARQL extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"" + host + "Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletXSPARQL#i\">");
+		writer.println("<rdf:Description rdf:about=\"" + host + "Prototyp/SFBServletXSPARQL#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Converter Service: XML to RDF / RDF to XML</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Converter Service: XML zu RDF / RDF zu XML</rdfs:label>");
@@ -138,7 +141,7 @@ public class SFBServletXSPARQL extends HttpServlet {
 
 			 //Store in TMP-FIle
 			int random = (int)((Math.random()) * 9999 + 1);
-			String filename = "/data/SFB/xsparql/" + random + ".tmp";
+			String filename = Helper.getProperties("xsparql_tmp_dir") + random + ".tmp";
 			System.out.println("+++++++++++++++++++++++++++FILENAME++++++++++++++++++++++++++++++++++++");
 			System.out.println(filename);
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");

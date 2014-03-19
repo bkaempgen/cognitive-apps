@@ -22,7 +22,8 @@ import com.sun.org.apache.xerces.internal.parsers.SAXParser;
  */
 public class SFBServletStripTs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	String host = Helper.getProperties("host");
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -37,9 +38,9 @@ public class SFBServletStripTs extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"" + host + "Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletStripTs#i\">");
+		writer.println("<rdf:Description rdf:about=\"" + host + "Prototyp/SFBServletStripTs#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-StripTs-Service</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-StripTs-Service</rdfs:label>");
@@ -48,13 +49,13 @@ public class SFBServletStripTs extends HttpServlet {
 		writer.println("<lapis:hasAbstract xml:lang=\"de\">Segmentierung des Gehirns einer Kopfaufnahme.</lapis:hasAbstract>");
 		writer.println("<lapis:hasAbstract xml:lang=\"en\">Segmentation of brain in a head scan.</lapis:hasAbstract>");
 		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
-		writer.println("<lapis:hasServiceDescription>http://141.52.218.34:8080/Prototyp/StripTs/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasServiceDescription>" + host + "Prototyp/StripTs/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>T1 image of patient, atlasImage and atlasMask.</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Stripped image and mask of T1 patient.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
-		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/StripTs/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>" + host + "Prototyp/StripTs/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>" + host + "Prototyp/StripTs/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>" + host + "Prototyp/StripTs/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>" + host + "Prototyp/StripTs/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -66,6 +67,7 @@ public class SFBServletStripTs extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
 		BufferedReader input = null;
 		RequestDataStripTs requestDataStripTs = null;
 
@@ -74,20 +76,23 @@ public class SFBServletStripTs extends HttpServlet {
 		String inputBrainAtlasImage = null;
 		String inputBrainAtlasMask = null;
 		String inputImage = null;
+		String tmp_dir = Helper.getProperties("tmp_dir");
 		
 		long unixTimestamp = System.currentTimeMillis() / 1000L;
 		int random = (int) ((Math.random()) * 999999999 + 1);
 		
-		String inputBrainAtlasImagePathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
-		String inputBrainAtlasMaskPathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
-		String inputImagePathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputBrainAtlasImagePathOnDisc = tmp_dir + unixTimestamp + "_" + random + "_";
+		String inputBrainAtlasMaskPathOnDisc = tmp_dir + unixTimestamp + "_" + random + "_";
+		String inputImagePathOnDisc = tmp_dir + unixTimestamp + "_" + random + "_";
 		
-		String resultImagePathOnDisc = "/data/SFB/tmp/";
-		String resultMaskPathOnDisc = "/data/SFB/tmp/";
+		String resultImagePathOnDisc = tmp_dir;
+		String resultMaskPathOnDisc = tmp_dir;
 		
 		String result = null;
 		String downloadLinkImage = null;
 		String downloadLinkMask = null;
+		
+		final String a = null;
 		
 		try {
 		
@@ -124,15 +129,15 @@ public class SFBServletStripTs extends HttpServlet {
 			} else {
 				
 				try {
-
+					
 					inputBrainAtlasImagePathOnDisc = Helper.getFileFromPostRequest(inputBrainAtlasImage, inputBrainAtlasImagePathOnDisc, request);
-					System.out.println(inputBrainAtlasImagePathOnDisc);
-					
-					inputBrainAtlasMaskPathOnDisc = Helper.getFileFromPostRequest(inputBrainAtlasMask, inputBrainAtlasMaskPathOnDisc, request);
-					System.out.println(inputBrainAtlasMaskPathOnDisc);
-					
-					inputImagePathOnDisc = Helper.getFileFromPostRequest(inputImage, inputImagePathOnDisc, request);
-					System.out.println(inputImagePathOnDisc);
+                    System.out.println(inputBrainAtlasImagePathOnDisc);
+                    
+                    inputBrainAtlasMaskPathOnDisc = Helper.getFileFromPostRequest(inputBrainAtlasMask, inputBrainAtlasMaskPathOnDisc, request);
+                    System.out.println(inputBrainAtlasMaskPathOnDisc);
+                    
+                    inputImagePathOnDisc = Helper.getFileFromPostRequest(inputImage, inputImagePathOnDisc, request);
+                    System.out.println(inputImagePathOnDisc);
 					
 				} catch (Throwable t) {
 					response.sendError(HttpServletResponse.SC_NOT_FOUND, "Corrupt input!");
@@ -161,11 +166,11 @@ public class SFBServletStripTs extends HttpServlet {
 					
 					response.setContentType("application/xml");
 
-					String rdf = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"http://141.52.218.34:8080/Prototyp/StripTs/Ontology#\">"
+					String rdf = "<rdf:RDF xmlns:lapis=\"" + host + "Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"  xmlns:stripts=\"" + host + "Prototyp/StripTs/Ontology#\">"
 					+ "<rdf:Description rdf:about=\""
 					+ requestDataStripTs.getRequestURI()
 					+ "\">"
-					+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
+					+ "<rdf:type rdf:resource=\"" + host + "Prototyp/Ontology/Lapis#Request\"/>"
 					+ "<lapis:salt>"
 					+ requestDataStripTs.getSalt()
 					+ "</lapis:salt>"

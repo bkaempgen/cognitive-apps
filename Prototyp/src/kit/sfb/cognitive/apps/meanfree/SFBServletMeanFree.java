@@ -19,6 +19,7 @@ import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 
 public class SFBServletMeanFree extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String host = Helper.getProperties("host");
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -28,9 +29,9 @@ public class SFBServletMeanFree extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"" + host + "Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletMeanFree#i\">");
+		writer.println("<rdf:Description rdf:about=\"" + host + "Prototyp/SFBServletMeanFree#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-MeanFree-Service</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-MeanFree-Service</rdfs:label>");
@@ -39,13 +40,13 @@ public class SFBServletMeanFree extends HttpServlet {
 		writer.println("<lapis:hasAbstract xml:lang=\"de\">Normalisierung d. Gewebefaerbung.</lapis:hasAbstract>");
 		writer.println("<lapis:hasAbstract xml:lang=\"en\">Normalization of tissue colour.</lapis:hasAbstract>");
 		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
-		writer.println("<lapis:hasServiceDescription>http://141.52.218.34:8080/Prototyp/MeanFree/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasServiceDescription>" + host + "Prototyp/MeanFree/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>T1 input image of patient and mask image (optional).</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Normalized t1 image regarding tissue colour.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/MeanFree/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/MeanFree/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
-		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/MeanFree/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/MeanFree/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>" + host + "Prototyp/MeanFree/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>" + host + "Prototyp/MeanFree/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>" + host + "Prototyp/MeanFree/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>" + host + "Prototyp/MeanFree/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
@@ -65,14 +66,15 @@ public class SFBServletMeanFree extends HttpServlet {
 		String requestURI = null;
 		String inputImage = null;
 		String inputMaskImage = null;
+		String tmp_dir = Helper.getProperties("tmp_dir");
 
 		long unixTimestamp = System.currentTimeMillis() / 1000L;
 		int random = (int) ((Math.random()) * 999999999 + 1);
 
-		String inputImagePathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
-		String inputMaskImagePathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
+		String inputImagePathOnDisc = tmp_dir + unixTimestamp + "_" + random + "_";
+		String inputMaskImagePathOnDisc = tmp_dir + unixTimestamp + "_" + random + "_";
 
-		String resultPathOnDisc = "/data/SFB/tmp/";
+		String resultPathOnDisc = tmp_dir;
 
 		String result = null;
 		String downloadLink = null;
@@ -144,11 +146,11 @@ public class SFBServletMeanFree extends HttpServlet {
 
 					response.setContentType("application/xml");
 
-					String rdf = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"http://141.52.218.34:8080/Prototyp/MeanFree/Ontology#\">"
+					String rdf = "<rdf:RDF xmlns:lapis=\"" + host + "Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:meanfree=\"" + host + "Prototyp/MeanFree/Ontology#\">"
 							+ "<rdf:Description rdf:about=\""
 							+ requestDataMeanFree.getRequestURI()
 							+ "\">"
-							+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
+							+ "<rdf:type rdf:resource=\"" + host + "Prototyp/Ontology/Lapis#Request\"/>"
 							+ "<lapis:salt>"
 							+ requestDataMeanFree.getSalt()
 							+ "</lapis:salt>"

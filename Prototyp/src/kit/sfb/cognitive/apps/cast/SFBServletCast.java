@@ -19,6 +19,7 @@ import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 
 public class SFBServletCast extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String host = Helper.getProperties("host");
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,16 +28,18 @@ public class SFBServletCast extends HttpServlet {
 
 		BufferedReader input = null;
 		RequestDataCast requestDataCast = null;
+		
 
 		String salt = null;
 		String requestURI = null;
 		String inputImage = null;
+		String tmp_dir = Helper.getProperties("tmp_dir");
 
 		long unixTimestamp = System.currentTimeMillis() / 1000L;
 		int random = (int) ((Math.random()) * 999999999 + 1);
 
-		String inputImagePathOnDisc = "/data/SFB/tmp/" + unixTimestamp + "_" + random + "_";
-		String resultImagePathOnDisc = "/data/SFB/tmp/";
+		String inputImagePathOnDisc = tmp_dir + unixTimestamp + "_" + random + "_";
+		String resultImagePathOnDisc = tmp_dir;
 
 		String result = null;
 		String downloadLink = null;
@@ -108,11 +111,11 @@ public class SFBServletCast extends HttpServlet {
 					// Response
 					response.setContentType("application/xml");
 					
-					String rdf = "<rdf:RDF xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"http://141.52.218.34:8080/Prototyp/Cast/Ontology#\">"
+					String rdf = "<rdf:RDF xmlns:lapis=\"" + host + "Prototyp/Ontology/Lapis#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:cast=\"" + host +"Prototyp/Cast/Ontology#\">"
 							+ "<rdf:Description rdf:about=\""
 							+ requestDataCast.getRequestURI()
 							+ "\">"
-							+ "<rdf:type rdf:resource=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#Request\"/>"
+							+ "<rdf:type rdf:resource=\"" + host + "Prototyp/Ontology/Lapis#Request\"/>"
 							+ "<lapis:salt>"
 							+ requestDataCast.getSalt()
 							+ "</lapis:salt>"
@@ -152,9 +155,9 @@ public class SFBServletCast extends HttpServlet {
 		writer.println("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"");
 		writer.println("xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"");
 		writer.println("xmlns:owl=\"http://www.w3.org/2002/07/owl#\"");
-		writer.println("xmlns:lapis=\"http://141.52.218.34:8080/Prototyp/Ontology/Lapis#\"");
+		writer.println("xmlns:lapis=\"" + host + "Prototyp/Ontology/Lapis#\"");
 		writer.println("xmlns:sp=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/\">");
-		writer.println("<rdf:Description rdf:about=\"http://141.52.218.34:8080/Prototyp/SFBServletCast#i\">");
+		writer.println("<rdf:Description rdf:about=\"" + host + "Prototyp/SFBServletCast#i\">");
 		writer.println("<rdf:type rdf:resource=\"http://surgipedia.sfb125.de/wiki/Special:URIResolver/Category:Coginitive_App\"/>");
 		writer.println("<rdfs:label xml:lang=\"de\">Cognitive-Cast-Service</rdfs:label>");
 		writer.println("<rdfs:label xml:lang=\"en\">Cognitive-Cast-Service</rdfs:label>");
@@ -163,13 +166,13 @@ public class SFBServletCast extends HttpServlet {
 		writer.println("<lapis:hasAbstract xml:lang=\"de\">Wandelt gegebenes Inputbild in aequivalentes .nrrd-File um.</lapis:hasAbstract>");
 		writer.println("<lapis:hasAbstract xml:lang=\"en\">Casts a given input image to an aquivalent .nrrd-File.</lapis:hasAbstract>");
 		writer.println("<lapis:hasSourceCode>https://code.google.com/p/cognitive-apps</lapis:hasSourceCode>");
-		writer.println("<lapis:hasServiceDescription>http://141.52.218.34:8080/Prototyp/Cast/description/index.html</lapis:hasServiceDescription>");
+		writer.println("<lapis:hasServiceDescription>" + host + "Prototyp/Cast/description/index.html</lapis:hasServiceDescription>");
 		writer.println("<lapis:hasInputDescription>Input image to be casted and output image path of casted image.</lapis:hasInputDescription>");
 		writer.println("<lapis:hasOutputDescription>Casted image.</lapis:hasOutputDescription>");
-		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/Cast/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/Cast/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
-		writer.println("<lapis:hasExampleRequest>http://141.52.218.34:8080/Prototyp/Cast/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
-		writer.println("<lapis:hasExampleResponse>http://141.52.218.34:8080/Prototyp/Cast/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>" + host + "Prototyp/Cast/RDF_Input_Example_1.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>" + host + "Prototyp/Cast/RDF_Output_Example_1.xml</lapis:hasExampleResponse>");
+		writer.println("<lapis:hasExampleRequest>" + host + "Prototyp/Cast/RDF_Input_Example_2.xml</lapis:hasExampleRequest>");
+		writer.println("<lapis:hasExampleResponse>" + host + "Prototyp/Cast/RDF_Output_Example_2.xml</lapis:hasExampleResponse>");
 		writer.println("</rdf:Description>");
 		writer.println("</rdf:RDF>");
 		writer.close();
