@@ -35,5 +35,5 @@ stripts:hasInputImage
 
 
 
-</textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/>Example:<a href="RDF_Input_Example.xml">RDF In</a> and <a href="RDF_Output_Example.xml">RDF Out</a></td></tr></table></body>
+</textarea></td><td style="padding-left:100px">RDF can be POSTed to <a href="description/index.html">service</a><br/></td></tr></table></body>
 </html>
