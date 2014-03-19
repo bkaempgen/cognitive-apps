@@ -1,46 +1,52 @@
 package kit.sfb.cognitive.apps.xnat;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-import kit.sfb.cognitive.apps.helper.Helper;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 public class Test {
+	
+	
+	static final String REST_URI                    = "http://aifb-ls3-vm2.aifb.kit.edu:8080/xnatwrapper/data/xnat";
+    static final String REST_URI_Project    = "http://aifb-ls3-vm2.aifb.kit.edu:8080/xnatwrapper/data/project/TP";
+    static final String REST_URI_Subject    = "http://aifb-ls3-vm2.aifb.kit.edu:8080/xnatwrapper/data/project/TP/subject/sfb125_S00002";
+    static final String REST_URI_Experiment = "http://aifb-ls3-vm2.aifb.kit.edu:8080/xnatwrapper/data/experiment/sfb125_E00004";
+    static final String xnat_file                   = "https://xnat.sfb125.de/data/projects/TP/resources/2/files/test_upload.xml";
 
 	public static void main(String[] args) throws URISyntaxException, IOException {
 		
-//		File file = new File("C:/Users/phiL/Desktop/tmp/test.txt");
-//		long diff = new Date().getTime() - file.lastModified();
-//		System.out.println(file.lastModified());
-//		System.out.println(new Date().getTime());
-//		System.out.println(diff);
-//		int min_threshold = 4;
-//		
-//		//* 1000 = s * 60 = min * 60 = h 
-//
-//		if (diff > min_threshold * 60 * 1000) {
-//		    file.delete();
-//		}
-		
-		
-		String folder = Helper.getProperties("tomcat_downloads");
-		
-		String castFolder 		= folder + "Cast/";
-		String striptsFolder 	= folder + "StripTs/";
-		String meanfreeFolder 	= folder + "MeanFree/";
-		
-		List<String> folders = new ArrayList<String>();
-		folders.add(castFolder);
-		folders.add(striptsFolder);
-		folders.add(meanfreeFolder);
-		
-		for (String s : folders){
-			System.out.println(s);
-		}
+		//System.out.println(Uploader.uploadToProject("CAUC", "C:/Users/phiL/Desktop/dummy.xml"));
+        		
+		//HTTPClient
+        HttpClientBuilder clientbuilder = HttpClientBuilder.create();
+        HttpClient httpclient = clientbuilder.build();
+
+
+        HttpGet httpGet = new HttpGet("http://aifb-ls3-vm2.aifb.kit.edu:8080/xnatwrapper/data/project/CAUC");
+        httpGet.setHeader("Accept" , "application/rdf+xml");
+        
+
+        try {
+                HttpResponse response = httpclient.execute(httpGet);
+                
+                BufferedReader r = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+                StringBuilder total = new StringBuilder();
+                String line = null;
+                while ((line = r.readLine()) != null) {
+                   total.append(line+ '\n');
+                }
+                System.out.println(total.toString());
+                
+        } catch (IOException e) {
+                e.printStackTrace();
+        }
+        
 		
 	}
 }
