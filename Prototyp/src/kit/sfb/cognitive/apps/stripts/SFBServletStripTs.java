@@ -92,7 +92,6 @@ public class SFBServletStripTs extends HttpServlet {
 		String downloadLinkImage = null;
 		String downloadLinkMask = null;
 		
-		final String a = null;
 		
 		try {
 		
